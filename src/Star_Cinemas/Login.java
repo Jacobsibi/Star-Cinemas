@@ -63,7 +63,6 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Star Cinemas");
 
         jTextField1.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
-        jTextField1.setText("Username");
         jTextField1.setToolTipText("");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +71,6 @@ public class Login extends javax.swing.JFrame {
         });
 
         jTextField2.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
-        jTextField2.setText("Password");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
