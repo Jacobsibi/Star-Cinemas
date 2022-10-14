@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -172,6 +173,11 @@ public class Employee extends javax.swing.JFrame {
         clearEmployee.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
         clearEmployee.setForeground(new java.awt.Color(255, 153, 204));
         clearEmployee.setText("Clear");
+        clearEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearEmployeeMouseClicked(evt);
+            }
+        });
         clearEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearEmployeeActionPerformed(evt);
@@ -182,6 +188,11 @@ public class Employee extends javax.swing.JFrame {
         editEmployee.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
         editEmployee.setForeground(new java.awt.Color(255, 153, 204));
         editEmployee.setText("Edit");
+        editEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editEmployeeMouseClicked(evt);
+            }
+        });
         editEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editEmployeeActionPerformed(evt);
@@ -192,6 +203,11 @@ public class Employee extends javax.swing.JFrame {
         deleteEmployee.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
         deleteEmployee.setForeground(new java.awt.Color(255, 153, 204));
         deleteEmployee.setText("Delete");
+        deleteEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteEmployeeMouseClicked(evt);
+            }
+        });
         deleteEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteEmployeeActionPerformed(evt);
@@ -212,6 +228,11 @@ public class Employee extends javax.swing.JFrame {
         employeeTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
         employeeTable.setRowHeight(50);
         employeeTable.setSelectionBackground(new java.awt.Color(255, 153, 204));
+        employeeTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                employeeTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(employeeTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -411,6 +432,75 @@ public class Employee extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_addEmployeeMouseClicked
+
+    private void employeeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeTableMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) employeeTable.getModel();
+        int tableSelection = employeeTable.getSelectedRow();
+        employeeID.setText(model.getValueAt(tableSelection, 0).toString());
+        employeeName.setText(model.getValueAt(tableSelection, 1).toString());
+        employeePassword.setText(model.getValueAt(tableSelection, 2).toString());
+        employeePosition.setText(model.getValueAt(tableSelection, 3).toString());
+
+
+    }//GEN-LAST:event_employeeTableMouseClicked
+
+    private void clearEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearEmployeeMouseClicked
+        // TODO add your handling code here:
+        employeeID.setText("");
+        employeeName.setText("");
+        employeePassword.setText("");
+        employeePosition.setText("");
+    }//GEN-LAST:event_clearEmployeeMouseClicked
+
+    private void deleteEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEmployeeMouseClicked
+        // TODO add your handling code here:
+        if (employeeID.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Select Employee to be Deleted!");
+        } else
+        {
+            try
+            {
+                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                String employeeSelection = employeeID.getText();
+                String deleteQuery = "Delete from JACOB.EMPLOYEETABLE where EMPLOYEEID=" + employeeSelection;
+                Statement delete = conn.createStatement();
+                delete.executeUpdate(deleteQuery);
+                selectEmployee();
+                JOptionPane.showMessageDialog(this, "Selected Employee Deleted!");
+
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_deleteEmployeeMouseClicked
+
+    private void editEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEmployeeMouseClicked
+        // TODO add your handling code here:
+        if (employeeID.getText().isEmpty() || employeeName.getText().isEmpty() || employeePassword.getText().isEmpty()
+                || employeePosition.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Employee Missing Information!");
+        } else
+        {
+            try
+            {
+                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                String editQuery = "Update JACOB.EMPLOYEETABLE set EMPLOYEENAME='" + employeeName.getText() + "'" + ",EMPLOYEEPASSWORD='" + employeePassword.getText() + "'" + ",EMPLOYEEPOSITION='" + employeePosition.getText() + "'" + ",EMPLOYEEGENDER='" + employeeGender.getSelectedItem().toString() + "'" + "where EMPLOYEEID=" + employeeID.getText();
+                Statement edit = conn.createStatement();
+                edit.executeUpdate(editQuery);
+                JOptionPane.showMessageDialog(this, "Selected Employee Edited!");
+                selectEmployee();
+
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+    }//GEN-LAST:event_editEmployeeMouseClicked
 
     /**
      * @param args the command line arguments
