@@ -62,7 +62,7 @@ public class Category extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        exitCategory = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         categoryID = new javax.swing.JTextField();
@@ -86,9 +86,14 @@ public class Category extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 48, 215));
 
-        jLabel6.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 153, 204));
-        jLabel6.setText("X");
+        exitCategory.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
+        exitCategory.setForeground(new java.awt.Color(255, 153, 204));
+        exitCategory.setText("X");
+        exitCategory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitCategoryMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Oriya MN", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 153, 204));
@@ -232,7 +237,7 @@ public class Category extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(exitCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -283,7 +288,7 @@ public class Category extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(exitCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -480,6 +485,11 @@ public class Category extends javax.swing.JFrame {
 
     }//GEN-LAST:event_editCategoryMouseClicked
 
+    private void exitCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitCategoryMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitCategoryMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -533,11 +543,11 @@ public class Category extends javax.swing.JFrame {
     private javax.swing.JButton clearCategory;
     private javax.swing.JButton deleteCategory;
     private javax.swing.JButton editCategory;
+    private javax.swing.JLabel exitCategory;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
