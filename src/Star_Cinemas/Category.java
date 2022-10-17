@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -178,6 +179,11 @@ public class Category extends javax.swing.JFrame {
         editCategory.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
         editCategory.setForeground(new java.awt.Color(255, 153, 204));
         editCategory.setText("Edit");
+        editCategory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editCategoryMouseClicked(evt);
+            }
+        });
         editCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editCategoryActionPerformed(evt);
@@ -188,6 +194,11 @@ public class Category extends javax.swing.JFrame {
         deleteCategory.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
         deleteCategory.setForeground(new java.awt.Color(255, 153, 204));
         deleteCategory.setText("Delete");
+        deleteCategory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteCategoryMouseClicked(evt);
+            }
+        });
         deleteCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteCategoryActionPerformed(evt);
@@ -208,6 +219,11 @@ public class Category extends javax.swing.JFrame {
         categoryTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
         categoryTable.setRowHeight(50);
         categoryTable.setSelectionBackground(new java.awt.Color(255, 153, 204));
+        categoryTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                categoryTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(categoryTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -406,6 +422,63 @@ public class Category extends javax.swing.JFrame {
         categoryName.setText("");
         categoryDescription.setText("");
     }//GEN-LAST:event_clearCategoryMouseClicked
+
+    private void categoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryTableMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) categoryTable.getModel();
+        int tableSelection = categoryTable.getSelectedRow();
+        categoryID.setText(model.getValueAt(tableSelection, 0).toString());
+        categoryName.setText(model.getValueAt(tableSelection, 1).toString());
+        categoryDescription.setText(model.getValueAt(tableSelection, 2).toString());
+    }//GEN-LAST:event_categoryTableMouseClicked
+
+    private void deleteCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteCategoryMouseClicked
+        // TODO add your handling code here:
+        if (categoryID.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Select Category to be Deleted!");
+        } else
+        {
+            try
+            {
+                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                String categorySelection = categoryID.getText();
+                String deleteQuery = "Delete from JACOB.CATEGORYTABLE where CATEGORYID=" + categorySelection;
+                Statement delete = conn.createStatement();
+                delete.executeUpdate(deleteQuery);
+                selectCategory();
+                JOptionPane.showMessageDialog(this, "Selected Category Deleted!");
+
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_deleteCategoryMouseClicked
+
+    private void editCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editCategoryMouseClicked
+        // TODO add your handling code here:
+        if (categoryID.getText().isEmpty() || categoryName.getText().isEmpty() || categoryDescription.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Category Missing Information!");
+        } else
+        {
+            try
+            {
+                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                String editQuery = "Update JACOB.CATEGORYTABLE set CATEGORYNAME='" + categoryName.getText() + "'" + ",CATEGORYDESCRIPTION='" + categoryDescription.getText() + "'" + ",CATEGORYTYPE='" + categoryType.getSelectedItem().toString() + "'" + "where CATEGORYID=" + categoryID.getText();
+                Statement edit = conn.createStatement();
+                edit.executeUpdate(editQuery);
+                JOptionPane.showMessageDialog(this, "Selected Category Edited!");
+                selectCategory();
+
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+    }//GEN-LAST:event_editCategoryMouseClicked
 
     /**
      * @param args the command line arguments
