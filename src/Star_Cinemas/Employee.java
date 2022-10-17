@@ -58,7 +58,7 @@ public class Employee extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        exitEmployee = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         employeeID = new javax.swing.JTextField();
@@ -84,9 +84,14 @@ public class Employee extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 48, 215));
 
-        jLabel6.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 153, 204));
-        jLabel6.setText("X");
+        exitEmployee.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
+        exitEmployee.setForeground(new java.awt.Color(255, 153, 204));
+        exitEmployee.setText("X");
+        exitEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitEmployeeMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Oriya MN", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 153, 204));
@@ -242,7 +247,7 @@ public class Employee extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 95, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitEmployee, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +305,7 @@ public class Employee extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(exitEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -441,8 +446,6 @@ public class Employee extends javax.swing.JFrame {
         employeeName.setText(model.getValueAt(tableSelection, 1).toString());
         employeePassword.setText(model.getValueAt(tableSelection, 2).toString());
         employeePosition.setText(model.getValueAt(tableSelection, 3).toString());
-
-
     }//GEN-LAST:event_employeeTableMouseClicked
 
     private void clearEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearEmployeeMouseClicked
@@ -502,6 +505,11 @@ public class Employee extends javax.swing.JFrame {
 
     }//GEN-LAST:event_editEmployeeMouseClicked
 
+    private void exitEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitEmployeeMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitEmployeeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -555,11 +563,11 @@ public class Employee extends javax.swing.JFrame {
     private javax.swing.JTextField employeePassword;
     private javax.swing.JTextField employeePosition;
     private javax.swing.JTable employeeTable;
+    private javax.swing.JLabel exitEmployee;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
