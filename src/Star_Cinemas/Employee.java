@@ -78,11 +78,17 @@ public class Employee extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         employeeTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
+        Menu3 = new javax.swing.JLabel();
+        productPanelJump = new javax.swing.JLabel();
+        employeeJump = new javax.swing.JLabel();
+        logoutJump = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(102, 48, 215));
+        jPanel1.setPreferredSize(new java.awt.Dimension(919, 990));
+        jPanel1.setRequestFocusEnabled(false);
 
         exitEmployee.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
         exitEmployee.setForeground(new java.awt.Color(255, 153, 204));
@@ -245,7 +251,7 @@ public class Employee extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 95, Short.MAX_VALUE)
+                .addGap(0, 47, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(exitEmployee, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -334,22 +340,78 @@ public class Employee extends javax.swing.JFrame {
                     .addComponent(editEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clearEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(129, 129, 129))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 204));
+        jPanel2.setPreferredSize(new java.awt.Dimension(240, 990));
+
+        Menu3.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        Menu3.setForeground(new java.awt.Color(102, 48, 215));
+        Menu3.setText("Menu");
+
+        productPanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        productPanelJump.setForeground(new java.awt.Color(102, 48, 215));
+        productPanelJump.setText("Products");
+        productPanelJump.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productPanelJumpMouseClicked(evt);
+            }
+        });
+
+        employeeJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        employeeJump.setForeground(new java.awt.Color(102, 48, 215));
+        employeeJump.setText("Employees");
+        employeeJump.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                employeeJumpMouseClicked(evt);
+            }
+        });
+
+        logoutJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        logoutJump.setForeground(new java.awt.Color(102, 48, 215));
+        logoutJump.setText("Log out");
+        logoutJump.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutJumpMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 114, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 25, Short.MAX_VALUE)
+                .addComponent(employeeJump)
+                .addGap(23, 23, 23))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(Menu3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(productPanelJump))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(logoutJump)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(Menu3)
+                .addGap(69, 69, 69)
+                .addComponent(productPanelJump)
+                .addGap(42, 42, 42)
+                .addComponent(employeeJump)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutJump)
+                .addGap(111, 111, 111))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -510,6 +572,24 @@ public class Employee extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitEmployeeMouseClicked
 
+    private void productPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productPanelJumpMouseClicked
+        // TODO add your handling code here:
+        new Products().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_productPanelJumpMouseClicked
+
+    private void employeeJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeJumpMouseClicked
+        // TODO add your handling code here:
+        new Employee().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_employeeJumpMouseClicked
+
+    private void logoutJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutJumpMouseClicked
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoutJumpMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -553,12 +633,14 @@ public class Employee extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Menu3;
     private javax.swing.JButton addEmployee;
     private javax.swing.JButton clearEmployee;
     private javax.swing.JButton deleteEmployee;
     private javax.swing.JButton editEmployee;
     private javax.swing.JComboBox<String> employeeGender;
     private javax.swing.JTextField employeeID;
+    private javax.swing.JLabel employeeJump;
     private javax.swing.JTextField employeeName;
     private javax.swing.JTextField employeePassword;
     private javax.swing.JTextField employeePosition;
@@ -574,5 +656,7 @@ public class Employee extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel logoutJump;
+    private javax.swing.JLabel productPanelJump;
     // End of variables declaration//GEN-END:variables
 }
