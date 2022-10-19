@@ -92,7 +92,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         roleSelection.setFont(new java.awt.Font("Oriya MN", 0, 14)); // NOI18N
-        roleSelection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Customer" }));
+        roleSelection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employee", "Manager" }));
 
         jLabel3.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 153, 204));
@@ -242,23 +242,47 @@ public class Login extends javax.swing.JFrame {
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
         // TODO add your handling code here:
-        String loginQuery = "select * from JACOB.EMPLOYEETABLE where EMPLOYEENAME='" + loginUsername.getText() + "' and EMPLOYEEPASSWORD='" + loginPassword.getText() + "'";
-        try
+        if (roleSelection.getSelectedItem().toString().equals("Employee"))
         {
-            conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
-            statement = conn.createStatement();
-            resultSet = statement.executeQuery(loginQuery);
-            if (resultSet.next()) {
-                new Billing().setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Incorrect Employee Login Details!");
+            String loginQuery = "select * from JACOB.EMPLOYEETABLE where EMPLOYEENAME='" + loginUsername.getText() + "' and EMPLOYEEPASSWORD='" + loginPassword.getText() + "'";
+            try
+            {
+                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                statement = conn.createStatement();
+                resultSet = statement.executeQuery(loginQuery);
+                if (resultSet.next())
+                {
+                    new Billing().setVisible(true);
+                    this.dispose();
+                } else
+                {
+                    JOptionPane.showMessageDialog(this, "Incorrect Employee Login Details!");
+                }
+            } catch (Exception e)
+            {
+                e.printStackTrace();
             }
-        } catch (Exception e)
+        } else
         {
-            e.printStackTrace();
+            String loginQuery = "select * from JACOB.ADMINTABLE where ADMINNAME='" + loginUsername.getText() + "' and ADMINPASSWORD='" + loginPassword.getText() + "'";
+            try
+            {
+                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                statement = conn.createStatement();
+                resultSet = statement.executeQuery(loginQuery);
+                if (resultSet.next())
+                {
+                    new Products().setVisible(true);
+                    this.dispose();
+                } else
+                {
+                    JOptionPane.showMessageDialog(this, "Incorrect Manager Login Details!");
+                }
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
-
     }//GEN-LAST:event_loginButtonMouseClicked
 
     /**
