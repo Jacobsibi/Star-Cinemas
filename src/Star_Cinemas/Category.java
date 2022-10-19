@@ -61,6 +61,11 @@ public class Category extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel6 = new javax.swing.JPanel();
+        Menu3 = new javax.swing.JLabel();
+        employeeJump = new javax.swing.JLabel();
+        productPanelJump = new javax.swing.JLabel();
+        logoutJump = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         exitCategory = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -79,10 +84,81 @@ public class Category extends javax.swing.JFrame {
         deleteCategory = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         categoryTable = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1159, 990));
+
+        jPanel6.setBackground(new java.awt.Color(255, 153, 204));
+        jPanel6.setPreferredSize(new java.awt.Dimension(240, 990));
+
+        Menu3.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        Menu3.setForeground(new java.awt.Color(102, 48, 215));
+        Menu3.setText("Menu");
+
+        employeeJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        employeeJump.setForeground(new java.awt.Color(102, 48, 215));
+        employeeJump.setText("Employees");
+        employeeJump.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                employeeJumpMouseClicked(evt);
+            }
+        });
+
+        productPanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        productPanelJump.setForeground(new java.awt.Color(102, 48, 215));
+        productPanelJump.setText("Products");
+        productPanelJump.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productPanelJumpMouseClicked(evt);
+            }
+        });
+
+        logoutJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        logoutJump.setForeground(new java.awt.Color(102, 48, 215));
+        logoutJump.setText("Log out");
+        logoutJump.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutJumpMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(productPanelJump))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(Menu3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(logoutJump)
+                        .addGap(51, 51, 51))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(employeeJump)
+                        .addGap(22, 22, 22))))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(Menu3)
+                .addGap(82, 82, 82)
+                .addComponent(productPanelJump)
+                .addGap(37, 37, 37)
+                .addComponent(employeeJump)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 470, Short.MAX_VALUE)
+                .addComponent(logoutJump)
+                .addGap(156, 156, 156))
+        );
 
         jPanel1.setBackground(new java.awt.Color(102, 48, 215));
 
@@ -243,16 +319,13 @@ public class Category extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                                .addComponent(categoryName, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(126, 126, 126))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(31, 31, 31)
-                                .addComponent(categoryID, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(categoryName, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(categoryID, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
@@ -264,7 +337,7 @@ public class Category extends javax.swing.JFrame {
                                     .addGap(350, 350, 350))
                                 .addComponent(categoryType, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 67, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -313,22 +386,9 @@ public class Category extends javax.swing.JFrame {
                     .addComponent(editCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clearCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(132, 132, 132))
-        );
-
-        jPanel5.setBackground(new java.awt.Color(255, 153, 204));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 115, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 953, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -336,22 +396,20 @@ public class Category extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(0, 241, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 966, Short.MAX_VALUE)))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 920, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -370,10 +428,6 @@ public class Category extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_categoryDescriptionActionPerformed
 
-    private void categoryTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_categoryTypeActionPerformed
-
     private void addCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCategoryActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addCategoryActionPerformed
@@ -390,9 +444,26 @@ public class Category extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteCategoryActionPerformed
 
+    private void logoutJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutJumpMouseClicked
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoutJumpMouseClicked
+
+    private void productPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productPanelJumpMouseClicked
+        // TODO add your handling code here:
+        new Products().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_productPanelJumpMouseClicked
+
+    private void employeeJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeJumpMouseClicked
+        // TODO add your handling code here:
+        new Employee().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_employeeJumpMouseClicked
+
     private void addCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addCategoryMouseClicked
         // TODO add your handling code here:
-
         if (categoryID.getText().isEmpty() || categoryName.getText().isEmpty() || categoryDescription.getText().isEmpty()
                 || categoryType.getSelectedItem().toString().isEmpty())
         {
@@ -421,21 +492,32 @@ public class Category extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addCategoryMouseClicked
 
-    private void clearCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearCategoryMouseClicked
+    private void categoryTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryTypeActionPerformed
         // TODO add your handling code here:
-        categoryID.setText("");
-        categoryName.setText("");
-        categoryDescription.setText("");
-    }//GEN-LAST:event_clearCategoryMouseClicked
+    }//GEN-LAST:event_categoryTypeActionPerformed
 
-    private void categoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryTableMouseClicked
+    private void editCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editCategoryMouseClicked
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) categoryTable.getModel();
-        int tableSelection = categoryTable.getSelectedRow();
-        categoryID.setText(model.getValueAt(tableSelection, 0).toString());
-        categoryName.setText(model.getValueAt(tableSelection, 1).toString());
-        categoryDescription.setText(model.getValueAt(tableSelection, 2).toString());
-    }//GEN-LAST:event_categoryTableMouseClicked
+        if (categoryID.getText().isEmpty() || categoryName.getText().isEmpty() || categoryDescription.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Category Missing Information!");
+        } else
+        {
+            try
+            {
+                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                String editQuery = "Update JACOB.CATEGORYTABLE set CATEGORYNAME='" + categoryName.getText() + "'" + ",CATEGORYDESCRIPTION='" + categoryDescription.getText() + "'" + ",CATEGORYTYPE='" + categoryType.getSelectedItem().toString() + "'" + "where CATEGORYID=" + categoryID.getText();
+                Statement edit = conn.createStatement();
+                edit.executeUpdate(editQuery);
+                JOptionPane.showMessageDialog(this, "Selected Category Edited!");
+                selectCategory();
+
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_editCategoryMouseClicked
 
     private void deleteCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteCategoryMouseClicked
         // TODO add your handling code here:
@@ -461,29 +543,21 @@ public class Category extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteCategoryMouseClicked
 
-    private void editCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editCategoryMouseClicked
+    private void clearCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearCategoryMouseClicked
         // TODO add your handling code here:
-        if (categoryID.getText().isEmpty() || categoryName.getText().isEmpty() || categoryDescription.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Category Missing Information!");
-        } else
-        {
-            try
-            {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
-                String editQuery = "Update JACOB.CATEGORYTABLE set CATEGORYNAME='" + categoryName.getText() + "'" + ",CATEGORYDESCRIPTION='" + categoryDescription.getText() + "'" + ",CATEGORYTYPE='" + categoryType.getSelectedItem().toString() + "'" + "where CATEGORYID=" + categoryID.getText();
-                Statement edit = conn.createStatement();
-                edit.executeUpdate(editQuery);
-                JOptionPane.showMessageDialog(this, "Selected Category Edited!");
-                selectCategory();
+        categoryID.setText("");
+        categoryName.setText("");
+        categoryDescription.setText("");
+    }//GEN-LAST:event_clearCategoryMouseClicked
 
-            } catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
-
-    }//GEN-LAST:event_editCategoryMouseClicked
+    private void categoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryTableMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) categoryTable.getModel();
+        int tableSelection = categoryTable.getSelectedRow();
+        categoryID.setText(model.getValueAt(tableSelection, 0).toString());
+        categoryName.setText(model.getValueAt(tableSelection, 1).toString());
+        categoryDescription.setText(model.getValueAt(tableSelection, 2).toString());
+    }//GEN-LAST:event_categoryTableMouseClicked
 
     private void exitCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitCategoryMouseClicked
         // TODO add your handling code here:
@@ -534,15 +608,26 @@ public class Category extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Menu;
+    private javax.swing.JLabel Menu1;
+    private javax.swing.JLabel Menu2;
+    private javax.swing.JLabel Menu3;
     private javax.swing.JButton addCategory;
     private javax.swing.JTextField categoryDescription;
     private javax.swing.JTextField categoryID;
     private javax.swing.JTextField categoryName;
+    private javax.swing.JLabel categoryPanelJump;
+    private javax.swing.JLabel categoryPanelJump1;
+    private javax.swing.JLabel categoryPanelJump2;
     private javax.swing.JTable categoryTable;
     private javax.swing.JComboBox<String> categoryType;
     private javax.swing.JButton clearCategory;
     private javax.swing.JButton deleteCategory;
     private javax.swing.JButton editCategory;
+    private javax.swing.JLabel employeeJump;
+    private javax.swing.JLabel employeePanelJump;
+    private javax.swing.JLabel employeePanelJump1;
+    private javax.swing.JLabel employeePanelJump2;
     private javax.swing.JLabel exitCategory;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -551,7 +636,15 @@ public class Category extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel logoutJump;
+    private javax.swing.JLabel logoutPanelJump;
+    private javax.swing.JLabel logoutPanelJump1;
+    private javax.swing.JLabel logoutPanelJump2;
+    private javax.swing.JLabel productPanelJump;
     // End of variables declaration//GEN-END:variables
 }
