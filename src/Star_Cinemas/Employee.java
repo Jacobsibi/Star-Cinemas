@@ -508,6 +508,7 @@ public class Employee extends javax.swing.JFrame {
         employeeName.setText(model.getValueAt(tableSelection, 1).toString());
         employeePassword.setText(model.getValueAt(tableSelection, 2).toString());
         employeePosition.setText(model.getValueAt(tableSelection, 3).toString());
+        employeeGender.setSelectedItem(model.getValueAt(tableSelection,4).toString());
     }//GEN-LAST:event_employeeTableMouseClicked
 
     private void clearEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearEmployeeMouseClicked

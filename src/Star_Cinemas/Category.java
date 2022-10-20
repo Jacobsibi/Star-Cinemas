@@ -557,6 +557,7 @@ public class Category extends javax.swing.JFrame {
         categoryID.setText(model.getValueAt(tableSelection, 0).toString());
         categoryName.setText(model.getValueAt(tableSelection, 1).toString());
         categoryDescription.setText(model.getValueAt(tableSelection, 2).toString());
+        categoryType.setSelectedItem(model.getValueAt(tableSelection,3).toString());
     }//GEN-LAST:event_categoryTableMouseClicked
 
     private void exitCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitCategoryMouseClicked

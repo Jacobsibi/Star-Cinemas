@@ -571,6 +571,7 @@ public class Products extends javax.swing.JFrame {
         productName.setText(model.getValueAt(tableSelection, 1).toString());
         productQuantity.setText(model.getValueAt(tableSelection, 2).toString());
         productPrice.setText(model.getValueAt(tableSelection, 3).toString());
+        productCategory.setSelectedItem(model.getValueAt(tableSelection,4).toString());
     }//GEN-LAST:event_productTableMouseClicked
 
     private void editProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProductMouseClicked
