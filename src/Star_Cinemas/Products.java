@@ -29,7 +29,10 @@ public class Products extends javax.swing.JFrame {
     public Products() {
         initComponents();
         selectProduct();
+        getCategory();
     }
+
+    //Database db;
 
     Connection conn = null;
     Statement statement = null;
@@ -46,6 +49,24 @@ public class Products extends javax.swing.JFrame {
             statement = conn.createStatement();
             resultSet = statement.executeQuery("Select * from " + usernameDerby + ".PRODUCTTABLE");
             productTable.setModel(DbUtils.resultSetToTableModel(resultSet));
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void getCategory() {
+        try
+        {
+            conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery("Select * from JACOB.CATEGORYTABLE");
+
+            while (resultSet.next())
+            {
+                String categories = resultSet.getString("CATEGORYNAME");
+                productCategory.addItem(categories);
+            }
         } catch (SQLException ex)
         {
             Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
@@ -240,7 +261,6 @@ public class Products extends javax.swing.JFrame {
         jLabel9.setText("Category");
 
         productCategory.setFont(new java.awt.Font("Oriya MN", 0, 14)); // NOI18N
-        productCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Popcorn", "Hot Food", "Cold Drink", "Hot Drink", "Alcohol", "Confectionery" }));
         productCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productCategoryActionPerformed(evt);

@@ -423,14 +423,7 @@
               <Font name="Oriya MN" size="14" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="Popcorn"/>
-                <StringItem index="1" value="Hot Food"/>
-                <StringItem index="2" value="Cold Drink"/>
-                <StringItem index="3" value="Hot Drink"/>
-                <StringItem index="4" value="Alcohol"/>
-                <StringItem index="5" value="Confectionery"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <Events>
