@@ -31,7 +31,7 @@ public class MoviePanel extends javax.swing.JFrame {
         selectMovie();
     }
 
-    //Database db;
+    Database db = new Database();
 
     Connection conn = null;
     Statement statement = null;
@@ -44,13 +44,18 @@ public class MoviePanel extends javax.swing.JFrame {
     public void selectMovie() {
         try
         {
-            conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+            /*
+            Initializes a database connection to output all movies from movie table via 
+            resultSet in table form using rs2xml. 
+             */
+            conn = db.establishConnection();
+            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
             statement = conn.createStatement();
             resultSet = statement.executeQuery("Select * from " + usernameDerby + ".MOVIETABLE");
             movieTable.setModel(DbUtils.resultSetToTableModel(resultSet));
         } catch (SQLException ex)
         {
-            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MoviePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -424,14 +429,15 @@ public class MoviePanel extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(movieTicketQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(movieDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(movieCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(movieDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(118, 118, 118)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addMovie, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -510,14 +516,15 @@ public class MoviePanel extends javax.swing.JFrame {
         {
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
                 PreparedStatement add = conn.prepareStatement("insert into MOVIETABLE values(?, ?, ?, ?, ?, ?)");
 
                 add.setInt(1, Integer.valueOf(movieID.getText()));
-                add.setString(2, movieName.getText());
-                add.setString(3, movieDesc.getText());
+                add.setString(2, movieName.getText().trim());
+                add.setString(3, movieDesc.getText().trim());
                 add.setDouble(4, Double.parseDouble(moviePrice.getText()));
-                add.setInt(5, Integer.parseInt(movieTicketQuantity.getText()));               
+                add.setInt(5, Integer.parseInt(movieTicketQuantity.getText()));
                 add.setString(6, movieCategory.getSelectedItem().toString());
                 int row = add.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Movie Successfully Added!");
@@ -527,7 +534,22 @@ public class MoviePanel extends javax.swing.JFrame {
 
             } catch (SQLException ex)
             {
-                Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+                if (ex.getSQLState().startsWith("23"))
+                {
+                    JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
+                } else
+                {
+                    Logger.getLogger(MoviePanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Input!\n"
+                        + "ID = Whole Numbers only\n"
+                        + "Name = All characters\n"
+                        + "Description = All characters\n"
+                        + "Price = All numbers\n"
+                        + "Quantity = Whole Numbers only\n");
             }
         }
     }//GEN-LAST:event_addMovieMouseClicked
@@ -555,7 +577,8 @@ public class MoviePanel extends javax.swing.JFrame {
         {
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
                 String movieSelection = movieID.getText();
                 String deleteQuery = "Delete from JACOB.MOVIETABLE where MOVIEID=" + movieSelection;
                 Statement delete = conn.createStatement();
@@ -579,7 +602,7 @@ public class MoviePanel extends javax.swing.JFrame {
         movieDesc.setText(model.getValueAt(tableSelection, 2).toString());
         moviePrice.setText(model.getValueAt(tableSelection, 3).toString());
         movieTicketQuantity.setText(model.getValueAt(tableSelection, 4).toString());
-        movieCategory.setSelectedItem(model.getValueAt(tableSelection,5).toString());
+        movieCategory.setSelectedItem(model.getValueAt(tableSelection, 5).toString());
     }//GEN-LAST:event_movieTableMouseClicked
 
     private void editMovieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMovieMouseClicked
@@ -592,16 +615,32 @@ public class MoviePanel extends javax.swing.JFrame {
         {
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
-                String editQuery = "Update JACOB.MOVIETABLE set MOVIENAME='" + movieName.getText() + "'" + ",MOVIEDESC='" + movieDesc.getText() + "'" + ",MOVIEPRICE=" + Double.parseDouble(moviePrice.getText()) + ""+ ",MOVIEQUANTITY=" + Integer.parseInt(movieTicketQuantity.getText()) + "" + ",MOVIECATEGORY='" + movieCategory.getSelectedItem().toString() + "'" + "where MOVIEID=" + movieID.getText();
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
+                String editQuery = "Update JACOB.MOVIETABLE set MOVIENAME='" + movieName.getText().trim() + "'" + ",MOVIEDESC='" + movieDesc.getText().trim() + "'" + ",MOVIEPRICE=" + Double.parseDouble(moviePrice.getText()) + "" + ",MOVIEQUANTITY=" + Integer.parseInt(movieTicketQuantity.getText()) + "" + ",MOVIECATEGORY='" + movieCategory.getSelectedItem().toString() + "'" + "where MOVIEID=" + movieID.getText();
                 Statement edit = conn.createStatement();
                 edit.executeUpdate(editQuery);
                 JOptionPane.showMessageDialog(this, "Selected Movie Edited!");
                 selectMovie();
 
-            } catch (Exception e)
+            } catch (SQLException ex)
             {
-                e.printStackTrace();
+                if (ex.getSQLState().startsWith("23"))
+                {
+                    JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
+                } else
+                {
+                    Logger.getLogger(MoviePanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Input!\n"
+                        + "ID = Whole Numbers only\n"
+                        + "Name = All characters\n"
+                        + "Description = All characters\n"
+                        + "Price = All numbers\n"
+                        + "Quantity = Whole Numbers only\n");
             }
         }
     }//GEN-LAST:event_editMovieMouseClicked

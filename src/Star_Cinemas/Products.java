@@ -32,7 +32,7 @@ public class Products extends javax.swing.JFrame {
         getCategory();
     }
 
-    //Database db;
+    Database db = new Database();
 
     Connection conn = null;
     Statement statement = null;
@@ -45,20 +45,30 @@ public class Products extends javax.swing.JFrame {
     public void selectProduct() {
         try
         {
-            conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+
+            /*
+            Initializes a database connection to output all products from product table via 
+            resultSet in table form using rs2xml. 
+             */
+            conn = db.establishConnection();
             statement = conn.createStatement();
             resultSet = statement.executeQuery("Select * from " + usernameDerby + ".PRODUCTTABLE");
             productTable.setModel(DbUtils.resultSetToTableModel(resultSet));
         } catch (SQLException ex)
         {
-            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void getCategory() {
         try
         {
-            conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+            /*
+            Initializes a database connection to output all categories from category table
+             */
+            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+            conn = db.establishConnection();
             statement = conn.createStatement();
             resultSet = statement.executeQuery("Select * from JACOB.CATEGORYTABLE");
 
@@ -69,7 +79,7 @@ public class Products extends javax.swing.JFrame {
             }
         } catch (SQLException ex)
         {
-            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -501,27 +511,48 @@ public class Products extends javax.swing.JFrame {
                 || productPrice.getText().isEmpty() || productCategory.getSelectedItem().toString().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Product Missing Information!");
+
         } else
         {
+
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                /*
+            Initializes a database connection to add products to product table
+                 */
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
                 PreparedStatement add = conn.prepareStatement("insert into PRODUCTTABLE values(?, ?, ?, ?, ?)");
 
                 add.setInt(1, Integer.valueOf(productID.getText()));
-                add.setString(2, productName.getText());
+                add.setString(2, productName.getText().trim());
                 add.setInt(3, Integer.parseInt(productQuantity.getText()));
                 add.setDouble(4, Double.parseDouble(productPrice.getText()));
                 add.setString(5, productCategory.getSelectedItem().toString());
                 int row = add.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Product Successfully Added!");
                 System.out.println("Product Added!");
+
                 conn.close();
                 selectProduct();
 
             } catch (SQLException ex)
             {
-                Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+                if (ex.getSQLState().startsWith("23"))
+                {
+                    JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
+                } else
+                {
+                    Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Input!\n"
+                        + "ID = Whole Numbers only\n"
+                        + "Name = All characters\n"
+                        + "Quantity = Whole Numbers only\n"
+                        + "Price = All numbers");
             }
         }
     }//GEN-LAST:event_addProductMouseClicked
@@ -556,9 +587,9 @@ public class Products extends javax.swing.JFrame {
                 selectProduct();
                 JOptionPane.showMessageDialog(this, "Selected Product Deleted!");
 
-            } catch (Exception e)
+            } catch (SQLException ex)
             {
-                e.printStackTrace();
+                Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_deleteProductMouseClicked
@@ -571,7 +602,7 @@ public class Products extends javax.swing.JFrame {
         productName.setText(model.getValueAt(tableSelection, 1).toString());
         productQuantity.setText(model.getValueAt(tableSelection, 2).toString());
         productPrice.setText(model.getValueAt(tableSelection, 3).toString());
-        productCategory.setSelectedItem(model.getValueAt(tableSelection,4).toString());
+        productCategory.setSelectedItem(model.getValueAt(tableSelection, 4).toString());
     }//GEN-LAST:event_productTableMouseClicked
 
     private void editProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProductMouseClicked
@@ -585,17 +616,32 @@ public class Products extends javax.swing.JFrame {
             try
             {
                 conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
-                String editQuery = "Update JACOB.PRODUCTTABLE set PRODUCTNAME='" + productName.getText() + "'" + ",PRODUCTQUANTITY=" + Integer.parseInt(productQuantity.getText()) + "" + ",PRODUCTPRICE=" + Double.parseDouble(productPrice.getText()) + "" + ",PRODUCTCATEGORY='" + productCategory.getSelectedItem().toString() + "'" + "where PRODUCTID=" + productID.getText();
+                String editQuery = "Update JACOB.PRODUCTTABLE set PRODUCTNAME='" + productName.getText().trim() + "'" + ",PRODUCTQUANTITY=" + Integer.parseInt(productQuantity.getText()) + "" + ",PRODUCTPRICE=" + Double.parseDouble(productPrice.getText()) + "" + ",PRODUCTCATEGORY='" + productCategory.getSelectedItem().toString() + "'" + "where PRODUCTID=" + productID.getText();
                 Statement edit = conn.createStatement();
                 edit.executeUpdate(editQuery);
                 JOptionPane.showMessageDialog(this, "Selected Product Edited!");
                 selectProduct();
 
-            } catch (Exception e)
+            } catch (SQLException ex)
             {
-                e.printStackTrace();
+                if (ex.getSQLState().startsWith("23"))
+                {
+                    JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
+                } else
+                {
+                    Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Input!\n"
+                        + "ID = Whole Numbers only\n"
+                        + "Name = All characters\n"
+                        + "Quantity = Whole Numbers only\n"
+                        + "Price = All numbers");
             }
         }
+
     }//GEN-LAST:event_editProductMouseClicked
 
     private void exitProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitProductMouseClicked

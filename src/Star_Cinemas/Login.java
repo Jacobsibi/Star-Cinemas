@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +27,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
     }
 
+    Database db = new Database();
     Connection conn = null;
     Statement statement = null;
     ResultSet resultSet = null;
@@ -244,10 +248,11 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (roleSelection.getSelectedItem().toString().equals("Employee"))
         {
-            String loginQuery = "select * from JACOB.EMPLOYEETABLE where EMPLOYEENAME='" + loginUsername.getText() + "' and EMPLOYEEPASSWORD='" + loginPassword.getText() + "'";
+            String loginQuery = "select * from JACOB.EMPLOYEETABLE where EMPLOYEENAME='" + loginUsername.getText().trim() + "' and EMPLOYEEPASSWORD='" + loginPassword.getText().trim() + "'";
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
                 statement = conn.createStatement();
                 resultSet = statement.executeQuery(loginQuery);
                 if (resultSet.next())
@@ -258,16 +263,21 @@ public class Login extends javax.swing.JFrame {
                 {
                     JOptionPane.showMessageDialog(this, "Incorrect Employee Login Details!");
                 }
-            } catch (Exception e)
+            } catch (SQLException ex)
             {
-                e.printStackTrace();
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Input!\n"
+                        + "Check your spelling!");
             }
         } else
         {
-            String loginQuery = "select * from JACOB.ADMINTABLE where ADMINNAME='" + loginUsername.getText() + "' and ADMINPASSWORD='" + loginPassword.getText() + "'";
+            String loginQuery = "select * from JACOB.ADMINTABLE where ADMINNAME='" + loginUsername.getText().trim() + "' and ADMINPASSWORD='" + loginPassword.getText().trim() + "'";
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
                 statement = conn.createStatement();
                 resultSet = statement.executeQuery(loginQuery);
                 if (resultSet.next())
@@ -278,9 +288,13 @@ public class Login extends javax.swing.JFrame {
                 {
                     JOptionPane.showMessageDialog(this, "Incorrect Manager Login Details!");
                 }
-            } catch (Exception e)
+            } catch (SQLException ex)
             {
-                e.printStackTrace();
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Input!\n"
+                        + "Check your spelling!");
             }
         }
     }//GEN-LAST:event_loginButtonMouseClicked
