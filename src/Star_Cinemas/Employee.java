@@ -27,6 +27,8 @@ public class Employee extends javax.swing.JFrame {
         selectEmployee();
     }
 
+    Database db = new Database();
+
     Connection conn = null;
     Statement statement = null;
     ResultSet resultSet = null;
@@ -38,7 +40,12 @@ public class Employee extends javax.swing.JFrame {
     public void selectEmployee() {
         try
         {
-            conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+            /*
+            Initializes a database connection to output all employees from employee table via 
+            resultSet in table form using rs2xml. 
+             */
+            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+            conn = db.establishConnection();
             statement = conn.createStatement();
             resultSet = statement.executeQuery("Select * from " + usernameDerby + ".EMPLOYEETABLE");
             employeeTable.setModel(DbUtils.resultSetToTableModel(resultSet));
@@ -479,13 +486,14 @@ public class Employee extends javax.swing.JFrame {
         {
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
                 PreparedStatement add = conn.prepareStatement("insert into EMPLOYEETABLE values(?, ?, ?, ?, ?)");
 
                 add.setInt(1, Integer.valueOf(employeeID.getText()));
-                add.setString(2, employeeName.getText());
-                add.setString(3, employeePassword.getText());
-                add.setString(4, employeePosition.getText());
+                add.setString(2, employeeName.getText().trim());
+                add.setString(3, employeePassword.getText().trim());
+                add.setString(4, employeePosition.getText().trim());
                 add.setString(5, employeeGender.getSelectedItem().toString());
                 int row = add.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Employee Successfully Added!");
@@ -495,7 +503,22 @@ public class Employee extends javax.swing.JFrame {
 
             } catch (SQLException ex)
             {
-                Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+                if (ex.getSQLState().startsWith("23"))
+                {
+                    JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
+                } else
+                {
+                    Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Input!\n"
+                        + "ID = Whole Numbers only\n"
+                        + "Name = Letters only\n"
+                        + "Password = Any characters\n"
+                        + "Price = Numbers only\n"
+                        + "Quantity = Whole Numbers only\n");
             }
         }
     }//GEN-LAST:event_addEmployeeMouseClicked
@@ -508,7 +531,7 @@ public class Employee extends javax.swing.JFrame {
         employeeName.setText(model.getValueAt(tableSelection, 1).toString());
         employeePassword.setText(model.getValueAt(tableSelection, 2).toString());
         employeePosition.setText(model.getValueAt(tableSelection, 3).toString());
-        employeeGender.setSelectedItem(model.getValueAt(tableSelection,4).toString());
+        employeeGender.setSelectedItem(model.getValueAt(tableSelection, 4).toString());
     }//GEN-LAST:event_employeeTableMouseClicked
 
     private void clearEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearEmployeeMouseClicked
@@ -528,7 +551,8 @@ public class Employee extends javax.swing.JFrame {
         {
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
                 String employeeSelection = employeeID.getText();
                 String deleteQuery = "Delete from JACOB.EMPLOYEETABLE where EMPLOYEEID=" + employeeSelection;
                 Statement delete = conn.createStatement();
@@ -553,16 +577,32 @@ public class Employee extends javax.swing.JFrame {
         {
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
                 String editQuery = "Update JACOB.EMPLOYEETABLE set EMPLOYEENAME='" + employeeName.getText() + "'" + ",EMPLOYEEPASSWORD='" + employeePassword.getText() + "'" + ",EMPLOYEEPOSITION='" + employeePosition.getText() + "'" + ",EMPLOYEEGENDER='" + employeeGender.getSelectedItem().toString() + "'" + "where EMPLOYEEID=" + employeeID.getText();
                 Statement edit = conn.createStatement();
                 edit.executeUpdate(editQuery);
                 JOptionPane.showMessageDialog(this, "Selected Employee Edited!");
                 selectEmployee();
 
-            } catch (Exception e)
+            } catch (SQLException ex)
             {
-                e.printStackTrace();
+                if (ex.getSQLState().startsWith("23"))
+                {
+                    JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
+                } else
+                {
+                    Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Input!\n"
+                        + "ID = Whole Numbers only\n"
+                        + "Name = Letters only\n"
+                        + "Password = Any characters\n"
+                        + "Price = Numbers only\n"
+                        + "Quantity = Whole Numbers only\n");
             }
         }
 
