@@ -31,6 +31,7 @@ public class Category extends javax.swing.JFrame {
         selectCategory();
     }
 
+    Database db = new Database();
     Connection conn = null;
     Statement statement = null;
     ResultSet resultSet = null;
@@ -42,13 +43,17 @@ public class Category extends javax.swing.JFrame {
     public void selectCategory() {
         try
         {
-            conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+            /*
+            Initializes a database connection to output all categories from category table via 
+            resultSet in table form using rs2xml. 
+             */
+            conn = db.establishConnection();
             statement = conn.createStatement();
             resultSet = statement.executeQuery("Select * from " + usernameDerby + ".CATEGORYTABLE");
             categoryTable.setModel(DbUtils.resultSetToTableModel(resultSet));
         } catch (SQLException ex)
         {
-            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -472,12 +477,13 @@ public class Category extends javax.swing.JFrame {
         {
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
                 PreparedStatement add = conn.prepareStatement("insert into CATEGORYTABLE values(?, ?, ?, ?)");
 
                 add.setInt(1, Integer.valueOf(categoryID.getText()));
-                add.setString(2, categoryName.getText());
-                add.setString(3, categoryDescription.getText());
+                add.setString(2, categoryName.getText().trim());
+                add.setString(3, categoryDescription.getText().trim());
                 add.setString(4, categoryType.getSelectedItem().toString());
                 int row = add.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Category Successfully Added!");
@@ -487,7 +493,20 @@ public class Category extends javax.swing.JFrame {
 
             } catch (SQLException ex)
             {
-                Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+                if (ex.getSQLState().startsWith("23"))
+                {
+                    JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
+                } else
+                {
+                    Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Input!\n"
+                        + "ID = Whole Numbers only\n"
+                        + "Name = All characters\n"
+                        + "Description = All characters\n");
             }
         }
     }//GEN-LAST:event_addCategoryMouseClicked
@@ -505,16 +524,30 @@ public class Category extends javax.swing.JFrame {
         {
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
-                String editQuery = "Update JACOB.CATEGORYTABLE set CATEGORYNAME='" + categoryName.getText() + "'" + ",CATEGORYDESCRIPTION='" + categoryDescription.getText() + "'" + ",CATEGORYTYPE='" + categoryType.getSelectedItem().toString() + "'" + "where CATEGORYID=" + categoryID.getText();
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
+                String editQuery = "Update JACOB.CATEGORYTABLE set CATEGORYNAME='" + categoryName.getText().trim() + "'" + ",CATEGORYDESCRIPTION='" + categoryDescription.getText().trim() + "'" + ",CATEGORYTYPE='" + categoryType.getSelectedItem().toString() + "'" + "where CATEGORYID=" + categoryID.getText();
                 Statement edit = conn.createStatement();
                 edit.executeUpdate(editQuery);
                 JOptionPane.showMessageDialog(this, "Selected Category Edited!");
                 selectCategory();
 
-            } catch (Exception e)
+            } catch (SQLException ex)
             {
-                e.printStackTrace();
+                if (ex.getSQLState().startsWith("23"))
+                {
+                    JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
+                } else
+                {
+                    Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Input!\n"
+                        + "ID = Whole Numbers only\n"
+                        + "Name = All characters\n"
+                        + "Description = All characters\n");
             }
         }
     }//GEN-LAST:event_editCategoryMouseClicked
@@ -528,7 +561,8 @@ public class Category extends javax.swing.JFrame {
         {
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
                 String categorySelection = categoryID.getText();
                 String deleteQuery = "Delete from JACOB.CATEGORYTABLE where CATEGORYID=" + categorySelection;
                 Statement delete = conn.createStatement();
@@ -536,9 +570,9 @@ public class Category extends javax.swing.JFrame {
                 selectCategory();
                 JOptionPane.showMessageDialog(this, "Selected Category Deleted!");
 
-            } catch (Exception e)
+            } catch (SQLException ex)
             {
-                e.printStackTrace();
+                Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_deleteCategoryMouseClicked
@@ -557,7 +591,7 @@ public class Category extends javax.swing.JFrame {
         categoryID.setText(model.getValueAt(tableSelection, 0).toString());
         categoryName.setText(model.getValueAt(tableSelection, 1).toString());
         categoryDescription.setText(model.getValueAt(tableSelection, 2).toString());
-        categoryType.setSelectedItem(model.getValueAt(tableSelection,3).toString());
+        categoryType.setSelectedItem(model.getValueAt(tableSelection, 3).toString());
     }//GEN-LAST:event_categoryTableMouseClicked
 
     private void exitCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitCategoryMouseClicked
@@ -609,26 +643,17 @@ public class Category extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Menu;
-    private javax.swing.JLabel Menu1;
-    private javax.swing.JLabel Menu2;
     private javax.swing.JLabel Menu3;
     private javax.swing.JButton addCategory;
     private javax.swing.JTextField categoryDescription;
     private javax.swing.JTextField categoryID;
     private javax.swing.JTextField categoryName;
-    private javax.swing.JLabel categoryPanelJump;
-    private javax.swing.JLabel categoryPanelJump1;
-    private javax.swing.JLabel categoryPanelJump2;
     private javax.swing.JTable categoryTable;
     private javax.swing.JComboBox<String> categoryType;
     private javax.swing.JButton clearCategory;
     private javax.swing.JButton deleteCategory;
     private javax.swing.JButton editCategory;
     private javax.swing.JLabel employeeJump;
-    private javax.swing.JLabel employeePanelJump;
-    private javax.swing.JLabel employeePanelJump1;
-    private javax.swing.JLabel employeePanelJump2;
     private javax.swing.JLabel exitCategory;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -637,15 +662,9 @@ public class Category extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logoutJump;
-    private javax.swing.JLabel logoutPanelJump;
-    private javax.swing.JLabel logoutPanelJump1;
-    private javax.swing.JLabel logoutPanelJump2;
     private javax.swing.JLabel productPanelJump;
     // End of variables declaration//GEN-END:variables
 }
