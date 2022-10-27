@@ -243,7 +243,7 @@ public class updateAdmin extends javax.swing.JFrame {
 
     private void exitUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitUpdateMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_exitUpdateMouseClicked
 
     private void clearAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearAdminMouseClicked

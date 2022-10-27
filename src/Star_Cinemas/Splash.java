@@ -137,7 +137,7 @@ public class Splash extends javax.swing.JFrame {
                 splash.percentage.setText(Integer.toString(i) + "%");
             }
         } catch (Exception e) {
-            
+                e.printStackTrace();
         }
         new Login().setVisible(true);
         splash.dispose();

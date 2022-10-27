@@ -87,8 +87,9 @@ public class Employee extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         Menu3 = new javax.swing.JLabel();
         productPanelJump = new javax.swing.JLabel();
-        employeeJump = new javax.swing.JLabel();
+        adminPanelJump = new javax.swing.JLabel();
         logoutJump = new javax.swing.JLabel();
+        moviePanelJump = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -368,12 +369,13 @@ public class Employee extends javax.swing.JFrame {
             }
         });
 
-        employeeJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
-        employeeJump.setForeground(new java.awt.Color(102, 48, 215));
-        employeeJump.setText("Employees");
-        employeeJump.addMouseListener(new java.awt.event.MouseAdapter() {
+        adminPanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        adminPanelJump.setForeground(new java.awt.Color(102, 48, 215));
+        adminPanelJump.setText("      Admin");
+        adminPanelJump.setToolTipText("");
+        adminPanelJump.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                employeeJumpMouseClicked(evt);
+                adminPanelJumpMouseClicked(evt);
             }
         });
 
@@ -386,14 +388,20 @@ public class Employee extends javax.swing.JFrame {
             }
         });
 
+        moviePanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        moviePanelJump.setForeground(new java.awt.Color(102, 48, 215));
+        moviePanelJump.setText("     Movies");
+        moviePanelJump.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moviePanelJumpMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 25, Short.MAX_VALUE)
-                .addComponent(employeeJump)
-                .addGap(23, 23, 23))
+            .addComponent(adminPanelJump, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -405,7 +413,8 @@ public class Employee extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(logoutJump)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
+            .addComponent(moviePanelJump, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -414,8 +423,10 @@ public class Employee extends javax.swing.JFrame {
                 .addComponent(Menu3)
                 .addGap(69, 69, 69)
                 .addComponent(productPanelJump)
-                .addGap(42, 42, 42)
-                .addComponent(employeeJump)
+                .addGap(38, 38, 38)
+                .addComponent(moviePanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(adminPanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutJump)
                 .addGap(111, 111, 111))
@@ -619,17 +630,23 @@ public class Employee extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_productPanelJumpMouseClicked
 
-    private void employeeJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeJumpMouseClicked
+    private void adminPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminPanelJumpMouseClicked
         // TODO add your handling code here:
-        new Employee().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_employeeJumpMouseClicked
+        new updateAdmin().setVisible(true);
+        
+    }//GEN-LAST:event_adminPanelJumpMouseClicked
 
     private void logoutJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutJumpMouseClicked
         // TODO add your handling code here:
         new Login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoutJumpMouseClicked
+
+    private void moviePanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moviePanelJumpMouseClicked
+        // TODO add your handling code here:
+        new MoviePanel().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_moviePanelJumpMouseClicked
 
     /**
      * @param args the command line arguments
@@ -676,12 +693,12 @@ public class Employee extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Menu3;
     private javax.swing.JButton addEmployee;
+    private javax.swing.JLabel adminPanelJump;
     private javax.swing.JButton clearEmployee;
     private javax.swing.JButton deleteEmployee;
     private javax.swing.JButton editEmployee;
     private javax.swing.JComboBox<String> employeeGender;
     private javax.swing.JTextField employeeID;
-    private javax.swing.JLabel employeeJump;
     private javax.swing.JTextField employeeName;
     private javax.swing.JTextField employeePassword;
     private javax.swing.JTextField employeePosition;
@@ -698,6 +715,7 @@ public class Employee extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logoutJump;
+    private javax.swing.JLabel moviePanelJump;
     private javax.swing.JLabel productPanelJump;
     // End of variables declaration//GEN-END:variables
 }

@@ -71,9 +71,10 @@ public class MoviePanel extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         Menu = new javax.swing.JLabel();
-        employeePanelJump = new javax.swing.JLabel();
-        categoryPanelJump = new javax.swing.JLabel();
         logoutPanelJump = new javax.swing.JLabel();
+        moviePanelJump = new javax.swing.JLabel();
+        productPanelJump = new javax.swing.JLabel();
+        categoryPanelJump = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         exitProduct = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -116,30 +117,39 @@ public class MoviePanel extends javax.swing.JFrame {
         Menu.setForeground(new java.awt.Color(102, 48, 215));
         Menu.setText("Menu");
 
-        employeePanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
-        employeePanelJump.setForeground(new java.awt.Color(102, 48, 215));
-        employeePanelJump.setText("Employees");
-        employeePanelJump.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                employeePanelJumpMouseClicked(evt);
-            }
-        });
-
-        categoryPanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
-        categoryPanelJump.setForeground(new java.awt.Color(102, 48, 215));
-        categoryPanelJump.setText("Categories");
-        categoryPanelJump.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                categoryPanelJumpMouseClicked(evt);
-            }
-        });
-
         logoutPanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
         logoutPanelJump.setForeground(new java.awt.Color(102, 48, 215));
         logoutPanelJump.setText("Log out");
         logoutPanelJump.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 logoutPanelJumpMouseClicked(evt);
+            }
+        });
+
+        moviePanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        moviePanelJump.setForeground(new java.awt.Color(102, 48, 215));
+        moviePanelJump.setText("     Movies");
+        moviePanelJump.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moviePanelJumpMouseClicked(evt);
+            }
+        });
+
+        productPanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        productPanelJump.setForeground(new java.awt.Color(102, 48, 215));
+        productPanelJump.setText("    Products");
+        productPanelJump.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productPanelJumpMouseClicked(evt);
+            }
+        });
+
+        categoryPanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        categoryPanelJump.setForeground(new java.awt.Color(102, 48, 215));
+        categoryPanelJump.setText("  Categories");
+        categoryPanelJump.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                categoryPanelJumpMouseClicked(evt);
             }
         });
 
@@ -152,35 +162,27 @@ public class MoviePanel extends javax.swing.JFrame {
                 .addComponent(Menu)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(categoryPanelJump)
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(logoutPanelJump)
-                        .addGap(51, 51, 51))))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .addContainerGap(31, Short.MAX_VALUE)
-                    .addComponent(employeePanelJump)
-                    .addGap(16, 16, 16)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutPanelJump)
+                .addGap(51, 51, 51))
+            .addComponent(categoryPanelJump, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+            .addComponent(productPanelJump, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(moviePanelJump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(94, 94, 94)
                 .addComponent(Menu)
-                .addGap(161, 161, 161)
-                .addComponent(categoryPanelJump)
+                .addGap(254, 254, 254)
+                .addComponent(moviePanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(productPanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(categoryPanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutPanelJump)
                 .addGap(156, 156, 156))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(222, 222, 222)
-                    .addComponent(employeePanelJump)
-                    .addContainerGap(723, Short.MAX_VALUE)))
         );
 
         jPanel1.setBackground(new java.awt.Color(102, 48, 215));
@@ -330,6 +332,17 @@ public class MoviePanel extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
@@ -463,7 +476,7 @@ public class MoviePanel extends javax.swing.JFrame {
                             .addComponent(movieSession, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -530,7 +543,7 @@ public class MoviePanel extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1112, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1117, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -741,19 +754,6 @@ public class MoviePanel extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitProductMouseClicked
 
-    private void employeePanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeePanelJumpMouseClicked
-        // TODO add your handling code here:
-        new Employee().setVisible(true);
-        this.dispose();
-
-    }//GEN-LAST:event_employeePanelJumpMouseClicked
-
-    private void categoryPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryPanelJumpMouseClicked
-        // TODO add your handling code here:
-        new Category().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_categoryPanelJumpMouseClicked
-
     private void logoutPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutPanelJumpMouseClicked
         // TODO add your handling code here:
         new Login().setVisible(true);
@@ -779,6 +779,24 @@ public class MoviePanel extends javax.swing.JFrame {
     private void movieDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movieDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_movieDateActionPerformed
+
+    private void moviePanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moviePanelJumpMouseClicked
+        // TODO add your handling code here:
+        new BillingPanel().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_moviePanelJumpMouseClicked
+
+    private void productPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productPanelJumpMouseClicked
+        // TODO add your handling code here:
+        new Products().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_productPanelJumpMouseClicked
+
+    private void categoryPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryPanelJumpMouseClicked
+        // TODO add your handling code here:
+        new Category().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_categoryPanelJumpMouseClicked
 
     /**
      * @param args the command line arguments
@@ -830,7 +848,6 @@ public class MoviePanel extends javax.swing.JFrame {
     private javax.swing.JButton clearMovie;
     private javax.swing.JButton deleteMovie;
     private javax.swing.JButton editMovie;
-    private javax.swing.JLabel employeePanelJump;
     private javax.swing.JLabel exitProduct;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -856,9 +873,11 @@ public class MoviePanel extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> movieGenre;
     private javax.swing.JTextField movieID;
     private javax.swing.JTextField movieName;
+    private javax.swing.JLabel moviePanelJump;
     private javax.swing.JTextField moviePrice;
     private javax.swing.JComboBox<String> movieSession;
     private javax.swing.JTable movieTable;
     private javax.swing.JTextField movieTicketQuantity;
+    private javax.swing.JLabel productPanelJump;
     // End of variables declaration//GEN-END:variables
 }

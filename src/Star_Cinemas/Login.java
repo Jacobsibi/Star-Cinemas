@@ -257,7 +257,7 @@ public class Login extends javax.swing.JFrame {
                 resultSet = statement.executeQuery(loginQuery);
                 if (resultSet.next())
                 {
-                    new Billing().setVisible(true);
+                    new BillingPanel().setVisible(true);
                     this.dispose();
                 } else
                 {
