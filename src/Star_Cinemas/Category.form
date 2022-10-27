@@ -28,13 +28,13 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="232" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="221" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="911" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="900" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -66,31 +66,18 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="productPanelJump" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                          <Component id="Menu3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                  <Component id="Menu3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="73" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="logoutJump" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="employeeJump" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace pref="54" max="32767" attributes="0"/>
+                  <Component id="logoutJump" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
+              <Component id="billingPanelJump" alignment="0" max="32767" attributes="0"/>
+              <Component id="moviePanelJump" alignment="0" max="32767" attributes="0"/>
+              <Component id="productPanelJump" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -98,11 +85,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                   <Component id="Menu3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                  <Component id="productPanelJump" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="employeeJump" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="330" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                  <Component id="billingPanelJump" min="-2" pref="63" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="moviePanelJump" min="-2" pref="63" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="productPanelJump" min="-2" pref="65" max="-2" attributes="0"/>
+                  <EmptySpace pref="172" max="32767" attributes="0"/>
                   <Component id="logoutJump" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
               </Group>
@@ -121,34 +110,6 @@
             <Property name="text" type="java.lang.String" value="Menu"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="employeeJump">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Oriya MN" size="36" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d7" green="30" red="66" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Employees"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="employeeJumpMouseClicked"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="productPanelJump">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Oriya MN" size="36" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d7" green="30" red="66" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Products"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="productPanelJumpMouseClicked"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="logoutJump">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -163,6 +124,48 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logoutJumpMouseClicked"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="billingPanelJump">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Oriya MN" size="36" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="d7" green="30" red="66" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="       Billing"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="billingPanelJumpMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="moviePanelJump">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Oriya MN" size="36" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="d7" green="30" red="66" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="      Movies"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="moviePanelJumpMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="productPanelJump">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Oriya MN" size="36" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="d7" green="30" red="66" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="    Products"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="productPanelJumpMouseClicked"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -175,73 +178,70 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="exitCategory" min="-2" pref="25" max="-2" attributes="0"/>
-              </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="266" max="32767" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="editCategory" min="-2" pref="145" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="categoryName" min="-2" pref="262" max="-2" attributes="0"/>
-                                      <Component id="categoryID" min="-2" pref="262" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="categoryDescription" min="-2" pref="262" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="350" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="categoryType" alignment="1" min="-2" pref="262" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="deleteCategory" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="clearCategory" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="395" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" min="-2" pref="799" max="-2" attributes="0"/>
-                              <Component id="addCategory" min="-2" pref="145" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="319" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="exitCategory" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jScrollPane1" min="-2" pref="799" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="addCategory" min="-2" pref="145" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                          <Component id="editCategory" min="-2" pref="145" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="categoryID" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="categoryName" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
+                                          <Component id="categoryType" min="-2" pref="200" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                          <Component id="deleteCategory" min="-2" pref="145" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                          <Component id="clearCategory" min="-2" pref="145" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="666" max="-2" attributes="0"/>
+                  <Component id="categoryDescription" min="-2" pref="200" max="-2" attributes="0"/>
+                  <EmptySpace pref="53" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="369" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -251,36 +251,36 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="exitCategory" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" pref="27" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="categoryID" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="categoryID" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="categoryDescription" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="categoryDescription" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="categoryName" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="categoryName" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="categoryType" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="addCategory" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                              <Component id="editCategory" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                              <Component id="deleteCategory" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                              <Component id="clearCategory" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                              <Component id="jLabel9" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="74" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="249" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="editCategory" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="addCategory" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="deleteCategory" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="clearCategory" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="378" max="-2" attributes="0"/>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -499,7 +499,7 @@
             <Component class="javax.swing.JTable" name="categoryTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
+                  <Table columnCount="4" rowCount="7">
                     <Column editable="true" title="CategoryID" type="java.lang.Object"/>
                     <Column editable="true" title="Name" type="java.lang.Object"/>
                     <Column editable="true" title="Description" type="java.lang.Object"/>

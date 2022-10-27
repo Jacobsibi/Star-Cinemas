@@ -41,7 +41,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" max="32767" attributes="0"/>
+          <Component id="jPanel1" pref="910" max="32767" attributes="0"/>
           <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
@@ -57,19 +57,22 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                  <Component id="Menu" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="logoutPanelJump" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-              </Group>
               <Component id="categoryPanelJump" alignment="1" pref="240" max="32767" attributes="0"/>
               <Component id="moviePanelJump" alignment="1" max="32767" attributes="0"/>
               <Component id="billingPanelJump" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          <Component id="Menu" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="logoutPanelJump" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -77,15 +80,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                   <Component id="Menu" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="billingPanelJump" min="-2" pref="63" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="moviePanelJump" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="categoryPanelJump" min="-2" pref="60" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
                   <Component id="logoutPanelJump" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -173,29 +176,8 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="productQuantity" min="-2" pref="262" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="productName" min="-2" pref="262" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="productID" min="-2" pref="262" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="87" max="32767" attributes="0"/>
+                  <EmptySpace pref="54" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -206,33 +188,58 @@
                           <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
                           <Component id="exitProduct" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="productCategory" min="-2" pref="262" max="-2" attributes="0"/>
-                                      <Component id="productPrice" min="-2" pref="262" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
+                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="productName" min="-2" pref="200" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="productQuantity" min="-2" pref="200" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                       <Component id="addProduct" min="-2" pref="145" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="editProduct" min="-2" pref="145" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="productID" min="-2" pref="200" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="productCategory" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <Component id="productPrice" min="-2" pref="200" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                                       <Component id="deleteProduct" min="-2" pref="145" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="clearProduct" min="-2" pref="145" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane1" min="-2" pref="806" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="66" pref="66" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jScrollPane1" min="-2" pref="819" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -250,35 +257,35 @@
                           <Component id="jLabel4" min="-2" pref="27" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="productID" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="productID" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="productPrice" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="productPrice" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="productName" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="productName" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="productCategory" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="productQuantity" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="productQuantity" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="addProduct" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                              <Component id="editProduct" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                              <Component id="deleteProduct" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                              <Component id="clearProduct" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="157" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="234" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="addProduct" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="editProduct" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="deleteProduct" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="clearProduct" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="367" max="-2" attributes="0"/>
+                  <EmptySpace pref="82" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -515,7 +522,7 @@
             <Component class="javax.swing.JTable" name="productTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="4">
+                  <Table columnCount="5" rowCount="8">
                     <Column editable="true" title="ProductID" type="java.lang.Object"/>
                     <Column editable="true" title="Name" type="java.lang.Object"/>
                     <Column editable="true" title="Quantity" type="java.lang.Object"/>

@@ -34,14 +34,14 @@
           <Group type="102" alignment="1" attributes="0">
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jPanel1" pref="1117" max="32767" attributes="0"/>
+              <Component id="jPanel1" pref="1128" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" pref="1150" max="32767" attributes="0"/>
           <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="987" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -68,7 +68,7 @@
               </Group>
               <Component id="categoryPanelJump" alignment="1" pref="235" max="32767" attributes="0"/>
               <Component id="productPanelJump" alignment="1" max="32767" attributes="0"/>
-              <Component id="moviePanelJump" alignment="0" max="32767" attributes="0"/>
+              <Component id="billingPanelJump" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -76,8 +76,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                   <Component id="Menu" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
-                  <Component id="moviePanelJump" min="-2" pref="63" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
+                  <Component id="billingPanelJump" min="-2" pref="63" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="productPanelJump" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -115,7 +115,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logoutPanelJumpMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="moviePanelJump">
+        <Component class="javax.swing.JLabel" name="billingPanelJump">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Oriya MN" size="36" style="1"/>
@@ -123,10 +123,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d7" green="30" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="     Movies"/>
+            <Property name="text" type="java.lang.String" value="      Billing"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="moviePanelJumpMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="billingPanelJumpMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="productPanelJump">
@@ -176,86 +176,85 @@
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Component id="exitProduct" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="1054" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="addMovie" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                                  <Component id="editMovie" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Component id="deleteMovie" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="addMovie" min="-2" pref="145" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                          <Component id="editMovie" min="-2" pref="145" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                          <Component id="deleteMovie" min="-2" pref="145" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="621" pref="621" max="-2" attributes="0"/>
+                                          <Component id="clearMovie" min="-2" pref="145" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="621" pref="621" max="-2" attributes="0"/>
-                                  <Component id="clearMovie" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                                                  <Component id="movieID" min="-2" pref="192" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="movieActors" min="-2" pref="192" max="-2" attributes="0"/>
+                                                      <Component id="movieDirector" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                                                      <Component id="movieName" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                                                      <Component id="movieDate" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="movieGenre" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Component id="moviePrice" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Component id="movieDuration" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Component id="movieTicketQuantity" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Component id="movieSession" min="-2" pref="192" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                                          <Component id="movieID" min="-2" pref="192" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="movieActors" min="-2" pref="192" max="-2" attributes="0"/>
-                                              <Component id="movieDirector" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                                              <Component id="movieName" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                                              <Component id="movieDate" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="movieGenre" min="-2" pref="192" max="-2" attributes="0"/>
-                              <Component id="moviePrice" min="-2" pref="192" max="-2" attributes="0"/>
-                              <Component id="movieDuration" min="-2" pref="192" max="-2" attributes="0"/>
-                              <Component id="movieTicketQuantity" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                              <Component id="movieSession" min="-2" pref="192" max="-2" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="-2" pref="489" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="36" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="482" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="1054" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -269,9 +268,9 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="movieID" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
@@ -313,9 +312,9 @@
                       <Component id="deleteMovie" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
                       <Component id="clearMovie" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="71" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="522" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="369" max="-2" attributes="0"/>
+                  <EmptySpace pref="53" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -32,10 +32,6 @@ public class Login extends javax.swing.JFrame {
     Statement statement = null;
     ResultSet resultSet = null;
 
-    String url = "jdbc:derby://localhost:1527/StarCinemasDB";
-    String usernameDerby = "Jacob";
-    String passwordDerby = "1234";
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -282,7 +278,7 @@ public class Login extends javax.swing.JFrame {
                 resultSet = statement.executeQuery(loginQuery);
                 if (resultSet.next())
                 {
-                    new Products().setVisible(true);
+                    new Employee().setVisible(true);
                     this.dispose();
                 } else
                 {
