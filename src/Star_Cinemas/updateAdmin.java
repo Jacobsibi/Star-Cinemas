@@ -23,13 +23,10 @@ public class updateAdmin extends javax.swing.JFrame {
     public updateAdmin() {
         initComponents();
     }
+    Database db = new Database();
     Connection conn = null;
     Statement statement = null;
     ResultSet resultSet = null;
-
-    String url = "jdbc:derby://localhost:1527/StarCinemasDB";
-    String usernameDerby = "Jacob";
-    String passwordDerby = "1234";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -138,7 +135,7 @@ public class updateAdmin extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 153, 204));
-        jLabel5.setText("Update Admin");
+        jLabel5.setText("Update Admin Details");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -169,7 +166,7 @@ public class updateAdmin extends javax.swing.JFrame {
                         .addGap(212, 212, 212)
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(298, 298, 298)
+                        .addGap(271, 271, 271)
                         .addComponent(jLabel5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -261,7 +258,7 @@ public class updateAdmin extends javax.swing.JFrame {
         {
             try
             {
-                conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                conn = db.establishConnection();
                 String editQuery = "Update JACOB.ADMINTABLE set ADMINNAME='" + adminName.getText() + "'" + ",ADMINPASSWORD='" + adminPassword.getText() +"'"+"where ADMINID=" +1;
                 Statement edit = conn.createStatement();
                 edit.executeUpdate(editQuery);
