@@ -25,7 +25,7 @@ import net.proteanit.sql.DbUtils;
 public class BillingPanel extends javax.swing.JFrame {
 
     /**
-     * Creates new form Products
+     * Creates new form Billing Panel
      */
     public BillingPanel() {
         initComponents();
@@ -34,11 +34,14 @@ public class BillingPanel extends javax.swing.JFrame {
     }
 
     Database db = new Database();
+    Checkout checkout = new Checkout();
+    Login login = new Login();
+
     Connection conn = null;
     Statement statement = null;
     ResultSet resultSet = null;
     ResultSet movieResultSet = null;
-    
+
     double billingPrice = 0.0;
     double ticketBillingPrice = 0.0;
     double billTotal = 0.0;
@@ -60,7 +63,7 @@ public class BillingPanel extends javax.swing.JFrame {
             Initializes a database connection to output all products & movies from product & movie table via 
             resultSet in table form using rs2xml. 
              */
-            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+
             conn = db.establishConnection();
             statement = conn.createStatement();
             resultSet = statement.executeQuery("Select * from JACOB.PRODUCTTABLE");
@@ -80,7 +83,7 @@ public class BillingPanel extends javax.swing.JFrame {
             /*
             Initializes a database connection to output all categories from category table for filter request.
              */
-            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+
             conn = db.establishConnection();
             statement = conn.createStatement();
             resultSet = statement.executeQuery("Select * from JACOB.CATEGORYTABLE");
@@ -213,7 +216,7 @@ public class BillingPanel extends javax.swing.JFrame {
         });
 
         refreshBill.setBackground(new java.awt.Color(18, 30, 49));
-        refreshBill.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
+        refreshBill.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
         refreshBill.setForeground(new java.awt.Color(255, 153, 204));
         refreshBill.setText("Refresh");
         refreshBill.setToolTipText("");
@@ -229,7 +232,7 @@ public class BillingPanel extends javax.swing.JFrame {
         });
 
         clearBill.setBackground(new java.awt.Color(18, 30, 49));
-        clearBill.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
+        clearBill.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
         clearBill.setForeground(new java.awt.Color(255, 153, 204));
         clearBill.setText("Clear");
         clearBill.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -244,7 +247,7 @@ public class BillingPanel extends javax.swing.JFrame {
         });
 
         printBill.setBackground(new java.awt.Color(18, 30, 49));
-        printBill.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
+        printBill.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
         printBill.setForeground(new java.awt.Color(255, 153, 204));
         printBill.setText("Print Bill");
         printBill.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -259,7 +262,7 @@ public class BillingPanel extends javax.swing.JFrame {
         });
 
         addToBill.setBackground(new java.awt.Color(18, 30, 49));
-        addToBill.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
+        addToBill.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
         addToBill.setForeground(new java.awt.Color(255, 153, 204));
         addToBill.setText("Add");
         addToBill.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -312,7 +315,7 @@ public class BillingPanel extends javax.swing.JFrame {
         jLabel12.setText("Checkout");
 
         filterResults.setBackground(new java.awt.Color(18, 30, 49));
-        filterResults.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
+        filterResults.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
         filterResults.setForeground(new java.awt.Color(255, 153, 204));
         filterResults.setText("Filter");
         filterResults.setToolTipText("");
@@ -372,7 +375,7 @@ public class BillingPanel extends javax.swing.JFrame {
         jLabel13.setText("Ticket Quantity");
 
         addTicketToBill.setBackground(new java.awt.Color(18, 30, 49));
-        addTicketToBill.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
+        addTicketToBill.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
         addTicketToBill.setForeground(new java.awt.Color(255, 153, 204));
         addTicketToBill.setText("Add");
         addTicketToBill.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -465,13 +468,13 @@ public class BillingPanel extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(printBill))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(finalTotalDisplay)
                                             .addComponent(cusName))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(printBill, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -481,21 +484,21 @@ public class BillingPanel extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(exitProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(exitProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(customerName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -515,19 +518,19 @@ public class BillingPanel extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ticketQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(productCategory)
-                            .addComponent(filterResults, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(productCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(filterResults, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addToBill, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(refreshBill, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(clearBill, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(addToBill, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(refreshBill, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(clearBill, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -536,7 +539,7 @@ public class BillingPanel extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addTicketToBill, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addTicketToBill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -544,10 +547,10 @@ public class BillingPanel extends javax.swing.JFrame {
                         .addComponent(cusName, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(finalTotalDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(printBill, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addComponent(printBill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 204));
@@ -555,7 +558,12 @@ public class BillingPanel extends javax.swing.JFrame {
 
         Menu.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
         Menu.setForeground(new java.awt.Color(102, 48, 215));
-        Menu.setText("Menu");
+        Menu.setText("       Menu");
+        Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuMouseClicked(evt);
+            }
+        });
 
         categoryPanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
         categoryPanelJump.setForeground(new java.awt.Color(102, 48, 215));
@@ -600,11 +608,8 @@ public class BillingPanel extends javax.swing.JFrame {
             .addComponent(categoryPanelJump, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
             .addComponent(productPanelJump, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(moviePanelJump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(Menu)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(logoutPanelJump, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -681,18 +686,21 @@ public class BillingPanel extends javax.swing.JFrame {
 
     private void clearBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearBillMouseClicked
         // TODO add your handling code here:
-
+        /*
+            Clear all billing textfields
+         */
         customerName.setText("");
         productName.setText("");
         productQuantity.setText("");
-        //productPrice.setText("");
-        //productPrice.setText("");
+
     }//GEN-LAST:event_clearBillMouseClicked
 
     public void ticketQuantityUpdate() {
+        /*
+            Update tickets quantity in movie database when purchased/added to checkout
+         */
         try
         {
-            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
             conn = db.establishConnection();
             String editQuery = "Update JACOB.MOVIETABLE set QUANTITY=" + updatedTicketCount + "" + "where MOVIEID=" + movieNumber;
             Statement edit = conn.createStatement();
@@ -706,9 +714,11 @@ public class BillingPanel extends javax.swing.JFrame {
     }
 
     public void quantityUpdate() {
+        /*
+            Update products quantity in product database when purchased/added to checkout
+         */
         try
         {
-            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
             conn = db.establishConnection();
             String editQuery = "Update JACOB.PRODUCTTABLE set PRODUCTQUANTITY=" + updatedQuantityCount + "" + "where PRODUCTID=" + productNumber;
             Statement edit = conn.createStatement();
@@ -722,8 +732,11 @@ public class BillingPanel extends javax.swing.JFrame {
     }
 
     private void addToBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addToBillMouseClicked
-        // TODO add your handling code here:
-
+        /**
+         * if any product text field is empty, tell user product missing
+         * information, if value entered is above quantity remaining, display
+         * :out of stock:
+         */
         try
         {
             if (productName.getText().isEmpty() || productQuantity.getText().isEmpty())
@@ -734,16 +747,19 @@ public class BillingPanel extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Out of stock");
             } else
             {
+                /**
+                 * Calculate product bill total using checkoutCalculation
+                 * function
+                 */
                 i++;
-                billTotal = billingPrice * Double.valueOf(productQuantity.getText());
-                finalTotal = finalTotal + billTotal;
+                int productQ = Integer.parseInt(productQuantity.getText());
+                billTotal = checkout.checkoutCalculation(billingPrice, productQ);
+                finalTotal = checkout.addTotal(finalTotal, billTotal);
+                /**
+                 * Display labels for checkout bill and numbers for each section
+                 * accordingly
+                 */
                 if (i == 1)
-                /* {
-                billingText.setText(billingText.getText() + "\t----------Checkout----------\n"
-                        + "Num        Product            Price       Quantity        Total\n" + i
-                        + "             " + productName.getText() + "        " + billingPrice + "              " + productQuantity.getText() + "             "
-                        + billTotal + "\n");
-            }*/
                 {
                     billingText.setText(billingText.getText() + "Checkout\n\n"
                             + "Num" + "\t" + "Product" + "\t\t" + "Price" + "\t" + "Quantity" + "\t" + "Total\n" + i
@@ -756,8 +772,7 @@ public class BillingPanel extends javax.swing.JFrame {
                             + billTotal + "\n");
                 }
                 cusName.setText("Customer: " + customerName.getText());
-                finalTotalDisplay.setText("Total: $" + "\t" + (finalTotal + ticketFinalTotal));
-
+                finalTotalDisplay.setText("Total: $" + "\t" + (checkout.billTotal(finalTotal, ticketFinalTotal)));
                 updatedQuantityCount -= Integer.valueOf(productQuantity.getText());
                 quantityUpdate();
             }
@@ -767,29 +782,27 @@ public class BillingPanel extends javax.swing.JFrame {
                     + "Quantity = Whole Numbers only\n"
                     + "Check your spelling!");
         }
-
-
     }//GEN-LAST:event_addToBillMouseClicked
 
     private void productTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTableMouseClicked
         // TODO add your handling code here:
+        /*
+            Product Panel textfields populated with Data from product Table
+         */
         DefaultTableModel model = (DefaultTableModel) productTable.getModel();
         int tableSelection = productTable.getSelectedRow();
 
-        productName.setText(model.getValueAt(tableSelection, 1).toString());
-        //productPrice.setText(model.getValueAt(tableSelection, 3).toString());
-        productCategory.setSelectedItem(model.getValueAt(tableSelection, 4).toString());
-        billingPrice = Double.valueOf(model.getValueAt(tableSelection, 3).toString());
-        //billTotal = billingPrice * Double.parseDouble(productQuantity.getText());
         productNumber = Integer.valueOf(model.getValueAt(tableSelection, 0).toString());
+        productName.setText(model.getValueAt(tableSelection, 1).toString());
         availableQuantity = Integer.valueOf(model.getValueAt(tableSelection, 2).toString());
+        billingPrice = Double.valueOf(model.getValueAt(tableSelection, 3).toString());
+        productCategory.setSelectedItem(model.getValueAt(tableSelection, 4).toString());
         updatedQuantityCount = availableQuantity;
-
-        //productPrice.setText(model.getValueAt(tableSelection, 3).toString());
     }//GEN-LAST:event_productTableMouseClicked
 
     private void printBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printBillMouseClicked
         // TODO add your handling code here:
+        //print checkout bill
         try
         {
             billingText.print();
@@ -806,18 +819,27 @@ public class BillingPanel extends javax.swing.JFrame {
 
     private void categoryPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open categoryPanel when selected on menu
+         */
         new Category().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_categoryPanelJumpMouseClicked
 
     private void logoutPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open login screen when log out selected
+         */
         new Login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoutPanelJumpMouseClicked
 
     private void productPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open products Panel when selected on menu
+         */
         new Products().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_productPanelJumpMouseClicked
@@ -828,10 +850,11 @@ public class BillingPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_productCategoryMouseClicked
 
     private void filterResultsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filterResultsMouseClicked
-        // TODO add your handling code here:
+        /*
+            Establish database connection to enable filter button using data from product table where product category = selection 
+         */
         try
         {
-            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
             conn = db.establishConnection();
             statement = conn.createStatement();
             resultSet = statement.executeQuery("Select * from JACOB.PRODUCTTABLE where PRODUCTCATEGORY='" + productCategory.getSelectedItem().toString() + "'");
@@ -848,15 +871,15 @@ public class BillingPanel extends javax.swing.JFrame {
 
     private void movieTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_movieTableMouseClicked
         // TODO add your handling code here:
+        /*
+            Movie Panel textfields populated with Data from movie table
+         */
         DefaultTableModel model = (DefaultTableModel) movieTable.getModel();
         int tableSelection = movieTable.getSelectedRow();
-
-        movieName.setText(model.getValueAt(tableSelection, 2).toString());
-        //ticketQuantity.setText(model.getValueAt(tableSelection, 4).toString());
-        ticketBillingPrice = Double.valueOf(model.getValueAt(tableSelection, 9).toString());
-        //billTotal = billingPrice * Double.parseDouble(productQuantity.getText());
         movieNumber = Integer.valueOf(model.getValueAt(tableSelection, 0).toString());
+        movieName.setText(model.getValueAt(tableSelection, 2).toString());
         ticketAvailableQuantity = Integer.valueOf(model.getValueAt(tableSelection, 8).toString());
+        ticketBillingPrice = Double.valueOf(model.getValueAt(tableSelection, 9).toString());
         updatedTicketCount = ticketAvailableQuantity;
 
     }//GEN-LAST:event_movieTableMouseClicked
@@ -870,7 +893,11 @@ public class BillingPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_ticketQuantityActionPerformed
 
     private void addTicketToBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addTicketToBillMouseClicked
-        // TODO add your handling code here:
+        /**
+         * if any movie text field is empty, tell user movie missing
+         * information, if ticket quantity entered is above quantity remaining,
+         * display :over the limit:
+         */
         try
         {
             if (movieName.getText().isEmpty() || ticketQuantity.getText().isEmpty())
@@ -878,12 +905,23 @@ public class BillingPanel extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Missing Information!");
             } else if (ticketAvailableQuantity <= Integer.valueOf(ticketQuantity.getText()))
             {
-                JOptionPane.showMessageDialog(this, "Out of stock");
+                JOptionPane.showMessageDialog(this, "Over the available limit!");
             } else
             {
+                /**
+                 * Calculate movie ticket bill total using checkoutCalculation
+                 * function
+                 */
                 i++;
-                ticketBillTotal = ticketBillingPrice * Double.valueOf(ticketQuantity.getText());
-                ticketFinalTotal = ticketFinalTotal + ticketBillTotal;
+                int ticketQ = Integer.parseInt(ticketQuantity.getText());
+
+                ticketBillTotal = checkout.checkoutCalculation(ticketBillingPrice, ticketQ);
+
+                ticketFinalTotal = checkout.addTotal(ticketFinalTotal, ticketBillTotal);
+                /**
+                 * Display labels for movie checkout bill and numbers for each section
+                 * accordingly
+                 */
                 if (i == 1)
                 {
                     billingText.setText(billingText.getText() + "Movie Checkout\n\n"
@@ -897,8 +935,7 @@ public class BillingPanel extends javax.swing.JFrame {
                             + ticketBillTotal + "\n");
                 }
                 cusName.setText("Customer: " + customerName.getText());
-                finalTotalDisplay.setText("Total: $" + "\t" + (finalTotal + ticketFinalTotal));
-
+                finalTotalDisplay.setText("Total: $" + "\t" + (checkout.billTotal(finalTotal, ticketFinalTotal)));
                 updatedTicketCount -= Integer.valueOf(ticketQuantity.getText());
                 ticketQuantityUpdate();
             }
@@ -908,8 +945,6 @@ public class BillingPanel extends javax.swing.JFrame {
                     + "Quantity = Whole Numbers only\n"
                     + "Check your spelling!");
         }
-
-
     }//GEN-LAST:event_addTicketToBillMouseClicked
 
     private void addTicketToBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTicketToBillActionPerformed
@@ -918,9 +953,21 @@ public class BillingPanel extends javax.swing.JFrame {
 
     private void moviePanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moviePanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open moviePanel when selected on menu
+         */
         new MoviePanel().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_moviePanelJumpMouseClicked
+
+    private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
+        // TODO add your handling code here
+        /*
+            Open employeeMenuPanel when selected on menu
+         */
+        new EmployeeMenuPanel().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_MenuMouseClicked
 
     /**
      * @param args the command line arguments

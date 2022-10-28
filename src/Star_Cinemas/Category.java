@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Star_Cinemas;
 
 import java.sql.Connection;
@@ -24,7 +19,7 @@ import net.proteanit.sql.DbUtils;
 public class Category extends javax.swing.JFrame {
 
     /**
-     * Creates new form Products
+     * Creates new form Category
      */
     public Category() {
         initComponents();
@@ -63,11 +58,11 @@ public class Category extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel6 = new javax.swing.JPanel();
-        Menu3 = new javax.swing.JLabel();
         logoutJump = new javax.swing.JLabel();
         billingPanelJump = new javax.swing.JLabel();
         moviePanelJump = new javax.swing.JLabel();
         productPanelJump = new javax.swing.JLabel();
+        Menu = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         exitCategory = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -93,10 +88,6 @@ public class Category extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 153, 204));
         jPanel6.setPreferredSize(new java.awt.Dimension(240, 850));
-
-        Menu3.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
-        Menu3.setForeground(new java.awt.Color(102, 48, 215));
-        Menu3.setText("Menu");
 
         logoutJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
         logoutJump.setForeground(new java.awt.Color(102, 48, 215));
@@ -134,14 +125,19 @@ public class Category extends javax.swing.JFrame {
             }
         });
 
+        Menu.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        Menu.setForeground(new java.awt.Color(102, 48, 215));
+        Menu.setText("       Menu");
+        Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(Menu3)
-                .addContainerGap(73, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(logoutJump)
@@ -149,13 +145,14 @@ public class Category extends javax.swing.JFrame {
             .addComponent(billingPanelJump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(moviePanelJump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(productPanelJump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Menu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(Menu3)
-                .addGap(164, 164, 164)
+                .addGap(87, 87, 87)
+                .addComponent(Menu)
+                .addGap(142, 142, 142)
                 .addComponent(billingPanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(moviePanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -408,7 +405,7 @@ public class Category extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 221, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -463,6 +460,10 @@ public class Category extends javax.swing.JFrame {
 
     private void addCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addCategoryMouseClicked
         // TODO add your handling code here:
+        /**
+         * if any category text field is empty, tell user category missing
+         * information
+         */
         if (categoryID.getText().isEmpty() || categoryName.getText().isEmpty() || categoryDescription.getText().isEmpty()
                 || categoryType.getSelectedItem().toString().isEmpty())
         {
@@ -471,7 +472,9 @@ public class Category extends javax.swing.JFrame {
         {
             try
             {
-                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                /*
+            Initializes a database connection to add products to product table
+                 */
                 conn = db.establishConnection();
                 PreparedStatement add = conn.prepareStatement("insert into CATEGORYTABLE values(?, ?, ?, ?)");
 
@@ -487,6 +490,9 @@ public class Category extends javax.swing.JFrame {
 
             } catch (SQLException ex)
             {
+                /*
+            Catch duplicate ID Error
+                 */
                 if (ex.getSQLState().startsWith("23"))
                 {
                     JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
@@ -494,7 +500,9 @@ public class Category extends javax.swing.JFrame {
                 {
                     Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                /*
+            Catch numberFormatException
+                 */
             } catch (NumberFormatException e)
             {
                 JOptionPane.showMessageDialog(this, "Invalid Input!\n"
@@ -511,6 +519,9 @@ public class Category extends javax.swing.JFrame {
 
     private void editCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editCategoryMouseClicked
         // TODO add your handling code here:
+        /*
+            If any category textfield is empty, inform user category missing information
+         */
         if (categoryID.getText().isEmpty() || categoryName.getText().isEmpty() || categoryDescription.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Category Missing Information!");
@@ -518,7 +529,9 @@ public class Category extends javax.swing.JFrame {
         {
             try
             {
-                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                /*
+            Initializes a database connection to EDIT categories in category table
+                 */
                 conn = db.establishConnection();
                 String editQuery = "Update JACOB.CATEGORYTABLE set CATEGORYNAME='" + categoryName.getText().trim() + "'" + ",CATEGORYDESCRIPTION='" + categoryDescription.getText().trim() + "'" + ",CATEGORYTYPE='" + categoryType.getSelectedItem().toString() + "'" + "where CATEGORYID=" + categoryID.getText();
                 Statement edit = conn.createStatement();
@@ -548,6 +561,9 @@ public class Category extends javax.swing.JFrame {
 
     private void deleteCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteCategoryMouseClicked
         // TODO add your handling code here:
+        /*
+            Initializes a database connection to DELETE categories from category table
+         */
         if (categoryID.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Category to be Deleted!");
@@ -555,7 +571,7 @@ public class Category extends javax.swing.JFrame {
         {
             try
             {
-                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+
                 conn = db.establishConnection();
                 String categorySelection = categoryID.getText();
                 String deleteQuery = "Delete from JACOB.CATEGORYTABLE where CATEGORYID=" + categorySelection;
@@ -573,6 +589,9 @@ public class Category extends javax.swing.JFrame {
 
     private void clearCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearCategoryMouseClicked
         // TODO add your handling code here:
+        /*
+            Clear all category textfields
+         */
         categoryID.setText("");
         categoryName.setText("");
         categoryDescription.setText("");
@@ -580,6 +599,9 @@ public class Category extends javax.swing.JFrame {
 
     private void categoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryTableMouseClicked
         // TODO add your handling code here:
+        /*
+            Category Panel textfields populated with Data from category Table
+         */
         DefaultTableModel model = (DefaultTableModel) categoryTable.getModel();
         int tableSelection = categoryTable.getSelectedRow();
         categoryID.setText(model.getValueAt(tableSelection, 0).toString());
@@ -595,21 +617,39 @@ public class Category extends javax.swing.JFrame {
 
     private void billingPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open billingPanel when selected on menu
+         */
         new BillingPanel().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_billingPanelJumpMouseClicked
 
     private void moviePanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moviePanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open moviePanel when selected on menu
+         */
         new MoviePanel().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_moviePanelJumpMouseClicked
 
     private void productPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open products Panel when selected on menu
+         */
         new Products().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_productPanelJumpMouseClicked
+
+    private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
+        // TODO add your handling code here
+        /*
+            Open employeeMenuPanel when selected on menu
+         */
+        new EmployeeMenuPanel().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_MenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -655,7 +695,7 @@ public class Category extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Menu3;
+    private javax.swing.JLabel Menu;
     private javax.swing.JButton addCategory;
     private javax.swing.JLabel billingPanelJump;
     private javax.swing.JTextField categoryDescription;

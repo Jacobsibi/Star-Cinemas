@@ -4,12 +4,12 @@ package Star_Cinemas;
  *
  * @author jacob.s
  */
-public class Splash extends javax.swing.JFrame {
+public class StarCinemasMainSplash extends javax.swing.JFrame {
 
     /**
-     * Creates new form Login
+     * Creates new form Splash loading screen which leads to Login screen
      */
-    public Splash() {
+    public StarCinemasMainSplash() {
         initComponents();
     }
 
@@ -24,10 +24,10 @@ public class Splash extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        heading = new javax.swing.JLabel();
+        exitSplash = new javax.swing.JLabel();
         percentage = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        slogan = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,21 +48,26 @@ public class Splash extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 48, 215));
 
-        jLabel2.setFont(new java.awt.Font("Oriya MN", 1, 60)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 153, 204));
-        jLabel2.setText("Star Cinemas");
+        heading.setFont(new java.awt.Font("Oriya MN", 1, 60)); // NOI18N
+        heading.setForeground(new java.awt.Color(255, 153, 204));
+        heading.setText("Star Cinemas");
 
-        jLabel6.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 153, 204));
-        jLabel6.setText("X");
+        exitSplash.setFont(new java.awt.Font("Oriya MN", 1, 24)); // NOI18N
+        exitSplash.setForeground(new java.awt.Color(255, 153, 204));
+        exitSplash.setText("X");
+        exitSplash.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitSplashMouseClicked(evt);
+            }
+        });
 
         percentage.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
         percentage.setForeground(new java.awt.Color(255, 153, 204));
         percentage.setText("%");
 
-        jLabel7.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 153, 204));
-        jLabel7.setText("First Class Cinema Experience");
+        slogan.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
+        slogan.setForeground(new java.awt.Color(255, 153, 204));
+        slogan.setText("First Class Cinema Experience");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -70,7 +75,7 @@ public class Splash extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(exitSplash, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(320, 320, 320)
                 .addComponent(percentage)
@@ -79,24 +84,27 @@ public class Splash extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(213, 213, 213)
-                        .addComponent(jLabel7))
+                        .addComponent(slogan))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(145, 145, 145)
-                        .addComponent(jLabel2)))
+                        .addComponent(heading)))
                 .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(exitSplash, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(heading)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(slogan, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(150, 150, 150)
                 .addComponent(percentage, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        progressBar.setBackground(new java.awt.Color(18, 30, 49));
+        progressBar.setForeground(new java.awt.Color(18, 30, 49));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,36 +130,49 @@ public class Splash extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void exitSplashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitSplashMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitSplashMouseClicked
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        Splash splash = new Splash();
+
+        /**
+         * Creates new form Splash loading screen which leads to Login screen
+         * It is possible to begin program from here, or you can run from StarCinemasMain which 
+         * opens login screen directly. 
+         */
+        StarCinemasMainSplash splash = new StarCinemasMainSplash();
         splash.setVisible(true);
-        
-        try {
-            for(int i = 0; i <= 100; i++) {
+        Login login = new Login();
+
+        try
+        {
+            for (int i = 0; i <= 100; i++)
+            {
                 Thread.sleep(40);
                 splash.progressBar.setValue(i);
                 splash.percentage.setText(Integer.toString(i) + "%");
             }
-        } catch (Exception e) {
-                e.printStackTrace();
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
         }
-        new Login().setVisible(true);
+        login.setVisible(true);
         splash.dispose();
-        
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel exitSplash;
+    private javax.swing.JLabel heading;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel percentage;
     private javax.swing.JProgressBar progressBar;
+    private javax.swing.JLabel slogan;
     // End of variables declaration//GEN-END:variables
 }

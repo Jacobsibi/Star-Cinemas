@@ -11,7 +11,7 @@ import net.proteanit.sql.DbUtils;
 
 /**
  *
- * @author jacob.s
+ * @author jacob.s Embedded database
  */
 public class Database {
 
@@ -19,10 +19,11 @@ public class Database {
     //Statement statement = null;
     //ResultSet resultSet = null;
 
-    private final String url = "jdbc:derby://localhost:1527/StarCinemasDB";
+    private final String url = "jdbc:derby:StarCinemasDB;create=true";
     private final String usernameDerby = "Jacob";
     private final String passwordDerby = "1234";
 
+    //Establish connection
     public Connection establishConnection() {
         try
         {

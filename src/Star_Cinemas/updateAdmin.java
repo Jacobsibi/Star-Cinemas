@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Star_Cinemas;
 
 import java.sql.Connection;
@@ -15,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author jacob.s
  */
-public class updateAdmin extends javax.swing.JFrame {
+public class UpdateAdmin extends javax.swing.JFrame {
 
     /**
-     * Creates new form Login
+     * Creates new update Admin username/password form
      */
-    public updateAdmin() {
+    public UpdateAdmin() {
         initComponents();
     }
     Database db = new Database();
@@ -251,6 +246,9 @@ public class updateAdmin extends javax.swing.JFrame {
 
     private void updateAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateAdminMouseClicked
         // TODO add your handling code here:
+        /**
+         * if AdminName or adminPassword empty tell user to enter details
+         */
         if (adminName.getText().isEmpty() || adminPassword.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Admin Missing Information!");
@@ -258,12 +256,15 @@ public class updateAdmin extends javax.swing.JFrame {
         {
             try
             {
+                /**
+                 * Establish database connection and update admin name and password
+                 */
                 conn = db.establishConnection();
-                String editQuery = "Update JACOB.ADMINTABLE set ADMINNAME='" + adminName.getText() + "'" + ",ADMINPASSWORD='" + adminPassword.getText() +"'"+"where ADMINID=" +1;
+                String editQuery = "Update JACOB.ADMINTABLE set ADMINNAME='" + adminName.getText() + "'" + ",ADMINPASSWORD='" + adminPassword.getText() + "'" + "where ADMINID=" + 1;
                 Statement edit = conn.createStatement();
                 edit.executeUpdate(editQuery);
                 JOptionPane.showMessageDialog(this, "Admin Details Updated!");
-                
+                conn.close();
 
             } catch (Exception e)
             {
@@ -293,24 +294,26 @@ public class updateAdmin extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(updateAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(updateAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(updateAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(updateAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new updateAdmin().setVisible(true);
+                new UpdateAdmin().setVisible(true);
             }
         });
     }

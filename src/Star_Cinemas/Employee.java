@@ -40,7 +40,7 @@ public class Employee extends javax.swing.JFrame {
             Initializes a database connection to output all employees from employee table via 
             resultSet in table form using rs2xml. 
              */
-            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+
             conn = db.establishConnection();
             statement = conn.createStatement();
             resultSet = statement.executeQuery("Select * from JACOB.EMPLOYEETABLE");
@@ -82,12 +82,12 @@ public class Employee extends javax.swing.JFrame {
         employeeTable = new javax.swing.JTable();
         adminUpdatePanelJump = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        Menu3 = new javax.swing.JLabel();
         logoutJump = new javax.swing.JLabel();
         categoryPanelJump = new javax.swing.JLabel();
         productPanelJump = new javax.swing.JLabel();
         moviePanelJump = new javax.swing.JLabel();
         billingPanelJump = new javax.swing.JLabel();
+        Menu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -275,50 +275,43 @@ public class Employee extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 74, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exitEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(89, 89, 89)
-                                        .addComponent(employeeGender, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(employeeName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(employeeID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(470, 470, 470))))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(employeeGender, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(employeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(employeeID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(470, 470, 470))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(373, 373, 373)
+                .addComponent(jLabel4)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(66, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(exitEmployee, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(employeePosition, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(employeePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(12, 12, 12))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addGap(273, 273, 273))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel9))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(employeePosition, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(employeePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(12, 12, 12))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(273, 273, 273))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(260, 260, 260)))
                         .addGap(47, 47, 47))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(adminUpdatePanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,10 +325,6 @@ public class Employee extends javax.swing.JFrame {
                         .addGap(59, 59, 59)
                         .addComponent(clearEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(373, 373, 373)
-                .addComponent(jLabel4)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,10 +367,6 @@ public class Employee extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 204));
         jPanel2.setPreferredSize(new java.awt.Dimension(240, 990));
-
-        Menu3.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
-        Menu3.setForeground(new java.awt.Color(102, 48, 215));
-        Menu3.setText("Menu");
 
         logoutJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
         logoutJump.setForeground(new java.awt.Color(102, 48, 215));
@@ -428,30 +413,35 @@ public class Employee extends javax.swing.JFrame {
             }
         });
 
+        Menu.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        Menu.setForeground(new java.awt.Color(102, 48, 215));
+        Menu.setText("        Menu");
+        Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(Menu3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(logoutJump)))
+                .addGap(50, 50, 50)
+                .addComponent(logoutJump)
                 .addContainerGap(55, Short.MAX_VALUE))
             .addComponent(billingPanelJump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(moviePanelJump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(productPanelJump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(categoryPanelJump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Menu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(Menu3)
-                .addGap(164, 164, 164)
+                .addGap(107, 107, 107)
+                .addComponent(Menu)
+                .addGap(152, 152, 152)
                 .addComponent(billingPanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(moviePanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -459,7 +449,7 @@ public class Employee extends javax.swing.JFrame {
                 .addComponent(productPanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(categoryPanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addComponent(logoutJump)
                 .addGap(111, 111, 111))
         );
@@ -521,6 +511,10 @@ public class Employee extends javax.swing.JFrame {
 
     private void addEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEmployeeMouseClicked
 
+        /**
+         * if any employee text field is empty, tell user employee missing
+         * information
+         */
         if (employeeID.getText().isEmpty() || employeeName.getText().isEmpty() || employeePassword.getText().isEmpty()
                 || employeePosition.getText().isEmpty() || employeeGender.getSelectedItem().toString().isEmpty())
         {
@@ -529,7 +523,9 @@ public class Employee extends javax.swing.JFrame {
         {
             try
             {
-                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                /*
+            Initializes a database connection to add employees to employee table
+                 */
                 conn = db.establishConnection();
                 PreparedStatement add = conn.prepareStatement("insert into EMPLOYEETABLE values(?, ?, ?, ?, ?)");
 
@@ -546,6 +542,9 @@ public class Employee extends javax.swing.JFrame {
 
             } catch (SQLException ex)
             {
+                /*
+            Catch duplicate ID Error
+                 */
                 if (ex.getSQLState().startsWith("23"))
                 {
                     JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
@@ -553,7 +552,9 @@ public class Employee extends javax.swing.JFrame {
                 {
                     Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                /*
+            Catch numberFormatException
+                 */
             } catch (NumberFormatException e)
             {
                 JOptionPane.showMessageDialog(this, "Invalid Input!\n"
@@ -568,6 +569,9 @@ public class Employee extends javax.swing.JFrame {
 
     private void employeeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeTableMouseClicked
         // TODO add your handling code here:
+        /*
+            Employee Panel textfields populated with Data from employee Table
+         */
         DefaultTableModel model = (DefaultTableModel) employeeTable.getModel();
         int tableSelection = employeeTable.getSelectedRow();
         employeeID.setText(model.getValueAt(tableSelection, 0).toString());
@@ -579,6 +583,9 @@ public class Employee extends javax.swing.JFrame {
 
     private void clearEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearEmployeeMouseClicked
         // TODO add your handling code here:
+        /*
+            Clear all employee textfields
+         */
         employeeID.setText("");
         employeeName.setText("");
         employeePassword.setText("");
@@ -587,6 +594,9 @@ public class Employee extends javax.swing.JFrame {
 
     private void deleteEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEmployeeMouseClicked
         // TODO add your handling code here:
+        /*
+            Initializes a database connection to DELETE employees from employee table
+         */
         if (employeeID.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Employee to be Deleted!");
@@ -612,6 +622,9 @@ public class Employee extends javax.swing.JFrame {
 
     private void editEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEmployeeMouseClicked
         // TODO add your handling code here:
+        /*
+            If any employee textfield is empty, inform user employee missing information
+         */
         if (employeeID.getText().isEmpty() || employeeName.getText().isEmpty() || employeePassword.getText().isEmpty()
                 || employeePosition.getText().isEmpty())
         {
@@ -620,7 +633,9 @@ public class Employee extends javax.swing.JFrame {
         {
             try
             {
-                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                /*
+            Initializes a database connection to EDIT employee details in employee table
+                 */
                 conn = db.establishConnection();
                 String editQuery = "Update JACOB.EMPLOYEETABLE set EMPLOYEENAME='" + employeeName.getText() + "'" + ",EMPLOYEEPASSWORD='" + employeePassword.getText() + "'" + ",EMPLOYEEPOSITION='" + employeePosition.getText() + "'" + ",EMPLOYEEGENDER='" + employeeGender.getSelectedItem().toString() + "'" + "where EMPLOYEEID=" + employeeID.getText();
                 Statement edit = conn.createStatement();
@@ -658,43 +673,70 @@ public class Employee extends javax.swing.JFrame {
 
     private void logoutJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open login screen when log out selected
+         */
         new Login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoutJumpMouseClicked
 
     private void categoryPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open categoryPanel when selected on menu
+         */
         new Category().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_categoryPanelJumpMouseClicked
 
     private void productPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open product Panel when selected on menu
+         */
         new Products().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_productPanelJumpMouseClicked
 
     private void moviePanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moviePanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open moviePanel when selected on menu
+         */
         new MoviePanel().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_moviePanelJumpMouseClicked
 
     private void billingPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open billingPanel when selected on menu
+         */
         new BillingPanel().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_billingPanelJumpMouseClicked
 
     private void adminUpdatePanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminUpdatePanelJumpMouseClicked
         // TODO add your handling code here:
-        new updateAdmin().setVisible(true);
-        
+        /*
+            Open  update admin panel when selected 
+         */
+        new UpdateAdmin().setVisible(true);
+
     }//GEN-LAST:event_adminUpdatePanelJumpMouseClicked
 
     private void adminUpdatePanelJumpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminUpdatePanelJumpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adminUpdatePanelJumpActionPerformed
+
+    private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
+        // TODO add your handling code here
+        /*
+            Open adminMenuPanel when selected on menu
+         */
+        new AdminMenuPanel().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_MenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -739,7 +781,7 @@ public class Employee extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Menu3;
+    private javax.swing.JLabel Menu;
     private javax.swing.JButton addEmployee;
     private javax.swing.JButton adminUpdatePanelJump;
     private javax.swing.JLabel billingPanelJump;

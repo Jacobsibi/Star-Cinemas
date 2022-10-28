@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Star_Cinemas;
 
 import java.sql.Connection;
@@ -41,8 +36,6 @@ public class Products extends javax.swing.JFrame {
     public void selectProduct() {
         try
         {
-            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
-
             /*
             Initializes a database connection to output all products from product table via 
             resultSet in table form using rs2xml. 
@@ -63,7 +56,7 @@ public class Products extends javax.swing.JFrame {
             /*
             Initializes a database connection to output all categories from category table
              */
-            //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+
             conn = db.establishConnection();
             statement = conn.createStatement();
             resultSet = statement.executeQuery("Select * from JACOB.CATEGORYTABLE");
@@ -90,11 +83,11 @@ public class Products extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        Menu = new javax.swing.JLabel();
         logoutPanelJump = new javax.swing.JLabel();
         billingPanelJump = new javax.swing.JLabel();
         moviePanelJump = new javax.swing.JLabel();
         categoryPanelJump = new javax.swing.JLabel();
+        Menu = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         exitProduct = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -122,10 +115,6 @@ public class Products extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 204));
-
-        Menu.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
-        Menu.setForeground(new java.awt.Color(102, 48, 215));
-        Menu.setText("Menu");
 
         logoutPanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
         logoutPanelJump.setForeground(new java.awt.Color(102, 48, 215));
@@ -163,6 +152,15 @@ public class Products extends javax.swing.JFrame {
             }
         });
 
+        Menu.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        Menu.setForeground(new java.awt.Color(102, 48, 215));
+        Menu.setText("       Menu");
+        Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -171,19 +169,15 @@ public class Products extends javax.swing.JFrame {
             .addComponent(moviePanelJump, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(billingPanelJump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(Menu))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(logoutPanelJump)))
+                .addGap(50, 50, 50)
+                .addComponent(logoutPanelJump)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(Menu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(84, 84, 84)
                 .addComponent(Menu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(billingPanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -513,6 +507,10 @@ public class Products extends javax.swing.JFrame {
     private void addProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addProductMouseClicked
         // TODO add your handling code here:
 
+        /**
+         * if any product text field is empty, tell user product missing
+         * information
+         */
         if (productID.getText().isEmpty() || productName.getText().isEmpty() || productQuantity.getText().isEmpty()
                 || productPrice.getText().isEmpty() || productCategory.getSelectedItem().toString().isEmpty())
         {
@@ -526,7 +524,7 @@ public class Products extends javax.swing.JFrame {
                 /*
             Initializes a database connection to add products to product table
                  */
-                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+
                 conn = db.establishConnection();
                 PreparedStatement add = conn.prepareStatement("insert into PRODUCTTABLE values(?, ?, ?, ?, ?)");
 
@@ -544,6 +542,9 @@ public class Products extends javax.swing.JFrame {
 
             } catch (SQLException ex)
             {
+                /*
+            Catch duplicate ID Error
+                 */
                 if (ex.getSQLState().startsWith("23"))
                 {
                     JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
@@ -551,7 +552,9 @@ public class Products extends javax.swing.JFrame {
                 {
                     Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                /*
+            Catch numberFormatException
+                 */
             } catch (NumberFormatException e)
             {
                 JOptionPane.showMessageDialog(this, "Invalid Input!\n"
@@ -570,6 +573,9 @@ public class Products extends javax.swing.JFrame {
     private void clearProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearProductMouseClicked
         // TODO add your handling code here:
 
+        /*
+            Clear all product textfields
+         */
         productID.setText("");
         productName.setText("");
         productQuantity.setText("");
@@ -578,6 +584,9 @@ public class Products extends javax.swing.JFrame {
 
     private void deleteProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteProductMouseClicked
         // TODO add your handling code here:
+        /*
+            Initializes a database connection to DELETE products from product table
+         */
         if (productID.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Product to be Deleted!");
@@ -602,6 +611,9 @@ public class Products extends javax.swing.JFrame {
 
     private void productTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTableMouseClicked
         // TODO add your handling code here:
+        /*
+            Product Panel textfields populated with Data from product Table
+         */
         DefaultTableModel model = (DefaultTableModel) productTable.getModel();
         int tableSelection = productTable.getSelectedRow();
         productID.setText(model.getValueAt(tableSelection, 0).toString());
@@ -613,6 +625,9 @@ public class Products extends javax.swing.JFrame {
 
     private void editProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProductMouseClicked
         // TODO add your handling code here:
+        /*
+            If any product textfield is empty, inform user product missing information
+         */
         if (productID.getText().isEmpty() || productName.getText().isEmpty() || productQuantity.getText().isEmpty()
                 || productPrice.getText().isEmpty())
         {
@@ -621,6 +636,9 @@ public class Products extends javax.swing.JFrame {
         {
             try
             {
+                /*
+            Initializes a database connection to EDIT products in product table
+                 */
                 conn = db.establishConnection();
                 String editQuery = "Update JACOB.PRODUCTTABLE set PRODUCTNAME='" + productName.getText().trim() + "'" + ",PRODUCTQUANTITY=" + Integer.parseInt(productQuantity.getText()) + "" + ",PRODUCTPRICE=" + Double.parseDouble(productPrice.getText()) + "" + ",PRODUCTCATEGORY='" + productCategory.getSelectedItem().toString() + "'" + "where PRODUCTID=" + productID.getText();
                 Statement edit = conn.createStatement();
@@ -657,27 +675,48 @@ public class Products extends javax.swing.JFrame {
 
     private void logoutPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open login screen when log out selected
+         */
         new Login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoutPanelJumpMouseClicked
 
     private void billingPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open billingPanel when selected on menu
+         */
         new BillingPanel().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_billingPanelJumpMouseClicked
 
     private void moviePanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moviePanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open moviePanel when selected on menu
+         */
         new MoviePanel().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_moviePanelJumpMouseClicked
 
     private void categoryPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open categoryPanel when selected on menu
+         */
         new Category().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_categoryPanelJumpMouseClicked
+
+    private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
+        // TODO add your handling code here
+        /*
+            Open employeeMenuPanel when selected on menu
+         */
+        new EmployeeMenuPanel().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_MenuMouseClicked
 
     /**
      * @param args the command line arguments

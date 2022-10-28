@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Star_Cinemas;
 
 import java.sql.Connection;
@@ -24,7 +19,7 @@ import net.proteanit.sql.DbUtils;
 public class MoviePanel extends javax.swing.JFrame {
 
     /**
-     * Creates new form Products
+     * Creates new form MoviePanel
      */
     public MoviePanel() {
         initComponents();
@@ -66,11 +61,11 @@ public class MoviePanel extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        Menu = new javax.swing.JLabel();
         logoutPanelJump = new javax.swing.JLabel();
         billingPanelJump = new javax.swing.JLabel();
         productPanelJump = new javax.swing.JLabel();
         categoryPanelJump = new javax.swing.JLabel();
+        Menu = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         exitProduct = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -109,10 +104,6 @@ public class MoviePanel extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 204));
 
-        Menu.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
-        Menu.setForeground(new java.awt.Color(102, 48, 215));
-        Menu.setText("Menu");
-
         logoutPanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
         logoutPanelJump.setForeground(new java.awt.Color(102, 48, 215));
         logoutPanelJump.setText("Log out");
@@ -124,7 +115,7 @@ public class MoviePanel extends javax.swing.JFrame {
 
         billingPanelJump.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
         billingPanelJump.setForeground(new java.awt.Color(102, 48, 215));
-        billingPanelJump.setText("      Billing");
+        billingPanelJump.setText("       Billing");
         billingPanelJump.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 billingPanelJumpMouseClicked(evt);
@@ -149,14 +140,19 @@ public class MoviePanel extends javax.swing.JFrame {
             }
         });
 
+        Menu.setFont(new java.awt.Font("Oriya MN", 1, 36)); // NOI18N
+        Menu.setForeground(new java.awt.Color(102, 48, 215));
+        Menu.setText("        Menu");
+        Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(Menu)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutPanelJump)
@@ -164,19 +160,20 @@ public class MoviePanel extends javax.swing.JFrame {
             .addComponent(categoryPanelJump, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
             .addComponent(productPanelJump, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(billingPanelJump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(101, 101, 101)
                 .addComponent(Menu)
-                .addGap(203, 203, 203)
+                .addGap(196, 196, 196)
                 .addComponent(billingPanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(productPanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(categoryPanelJump, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addComponent(logoutPanelJump)
                 .addGap(156, 156, 156))
         );
@@ -588,17 +585,24 @@ public class MoviePanel extends javax.swing.JFrame {
 
     private void addMovieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMovieMouseClicked
         // TODO add your handling code here:
+        /**
+         * if any moviePanel text field is empty, tell user movie missing
+         * information
+         */
 
         if (movieID.getText().isEmpty() || movieName.getText().isEmpty() || movieDuration.getText().isEmpty() || movieActors.getText().isEmpty() || movieDirector.getText().isEmpty()
                 || movieActors.getText().isEmpty() || movieTicketQuantity.getText().isEmpty()
-                || moviePrice.getText().isEmpty() || movieGenre.getSelectedItem().toString().isEmpty() || movieDate.getSelectedItem().toString().isEmpty() ||movieSession.getSelectedItem().toString().isEmpty())
+                || moviePrice.getText().isEmpty() || movieGenre.getSelectedItem().toString().isEmpty() || movieDate.getSelectedItem().toString().isEmpty() || movieSession.getSelectedItem().toString().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Movie Missing Information!");
         } else
         {
             try
             {
-                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                /*
+            Initializes a database connection to add movies to movie table
+                 */
+
                 conn = db.establishConnection();
                 PreparedStatement add = conn.prepareStatement("insert into MOVIETABLE values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -621,6 +625,9 @@ public class MoviePanel extends javax.swing.JFrame {
 
             } catch (SQLException ex)
             {
+                /*
+            Catch duplicate ID Error
+                 */
                 if (ex.getSQLState().startsWith("23"))
                 {
                     JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
@@ -628,7 +635,9 @@ public class MoviePanel extends javax.swing.JFrame {
                 {
                     Logger.getLogger(MoviePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                /*
+            Catch numberFormatException
+                 */
             } catch (NumberFormatException e)
             {
                 JOptionPane.showMessageDialog(this, "Invalid Input!\n"
@@ -650,6 +659,9 @@ public class MoviePanel extends javax.swing.JFrame {
     private void clearMovieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMovieMouseClicked
         // TODO add your handling code here:
 
+        /*
+            Clear all movie textfields
+         */
         movieID.setText("");
         movieName.setText("");
         movieDuration.setText("");
@@ -661,6 +673,9 @@ public class MoviePanel extends javax.swing.JFrame {
 
     private void deleteMovieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMovieMouseClicked
         // TODO add your handling code here:
+        /*
+            Initializes a database connection to DELETE movies from movie table
+         */
         if (movieID.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Movie to be Deleted!");
@@ -668,7 +683,7 @@ public class MoviePanel extends javax.swing.JFrame {
         {
             try
             {
-                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+
                 conn = db.establishConnection();
                 String movieSelection = movieID.getText();
                 String deleteQuery = "Delete from JACOB.MOVIETABLE where MOVIEID=" + movieSelection;
@@ -686,6 +701,9 @@ public class MoviePanel extends javax.swing.JFrame {
 
     private void movieTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_movieTableMouseClicked
         // TODO add your handling code here:
+        /*
+            Movie Panel textfields populated with Data from movie table
+         */
         DefaultTableModel model = (DefaultTableModel) movieTable.getModel();
         int tableSelection = movieTable.getSelectedRow();
         movieID.setText(model.getValueAt(tableSelection, 0).toString());
@@ -703,6 +721,10 @@ public class MoviePanel extends javax.swing.JFrame {
 
     private void editMovieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMovieMouseClicked
         // TODO add your handling code here:
+        /**
+         * if any moviePanel text field is empty, tell user movie missing
+         * information
+         */
         if (movieID.getText().isEmpty() || movieName.getText().isEmpty() || movieDuration.getText().isEmpty() || movieActors.getText().isEmpty() || movieDirector.getText().isEmpty()
                 || movieActors.getText().isEmpty() || movieTicketQuantity.getText().isEmpty()
                 || moviePrice.getText().isEmpty() || movieGenre.getSelectedItem().toString().isEmpty() || movieDate.getSelectedItem().toString().isEmpty() || movieSession.getSelectedItem().toString().isEmpty())
@@ -712,7 +734,9 @@ public class MoviePanel extends javax.swing.JFrame {
         {
             try
             {
-                //conn = DriverManager.getConnection(url, usernameDerby, passwordDerby);
+                /*
+            Initializes a database connection to EDIT movies in movie table
+                 */
                 conn = db.establishConnection();
                 String editQuery = "Update JACOB.MOVIETABLE set GENRE='" + movieGenre.getSelectedItem().toString() + "'" + ",NAME='" + movieName.getText().trim() + "'" + ",DURATION=" + Integer.parseInt(movieDuration.getText()) + "" + ",DATE='" + movieDate.getSelectedItem().toString() + "'" + ",SESSION='" + movieSession.getSelectedItem().toString() + "'" + ",ACTORS='" + movieActors.getText().trim() + "'" + ",DIRECTOR='" + movieDirector.getText().trim() + "'" + ",QUANTITY=" + Integer.parseInt(movieTicketQuantity.getText()) + "" + ",PRICE=" + Double.parseDouble(moviePrice.getText()) + "" + "where MOVIEID=" + movieID.getText();
                 Statement edit = conn.createStatement();
@@ -722,6 +746,9 @@ public class MoviePanel extends javax.swing.JFrame {
 
             } catch (SQLException ex)
             {
+                /*
+            Catch duplicate ID Error
+                 */
                 if (ex.getSQLState().startsWith("23"))
                 {
                     JOptionPane.showMessageDialog(this, "Duplicate ID Exists, Enter Unique ID!");
@@ -729,7 +756,9 @@ public class MoviePanel extends javax.swing.JFrame {
                 {
                     Logger.getLogger(MoviePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                /*
+            Catch numberFormatException
+                 */
             } catch (NumberFormatException e)
             {
                 JOptionPane.showMessageDialog(this, "Invalid Input!\n"
@@ -751,6 +780,9 @@ public class MoviePanel extends javax.swing.JFrame {
 
     private void logoutPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open login screen when log out selected
+         */
         new Login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoutPanelJumpMouseClicked
@@ -777,21 +809,39 @@ public class MoviePanel extends javax.swing.JFrame {
 
     private void billingPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billingPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open billingPanel when selected on menu
+         */
         new BillingPanel().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_billingPanelJumpMouseClicked
 
     private void productPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open products Panel when selected on menu
+         */
         new Products().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_productPanelJumpMouseClicked
 
     private void categoryPanelJumpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryPanelJumpMouseClicked
         // TODO add your handling code here:
+        /*
+            Open categoryPanel when selected on menu
+         */
         new Category().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_categoryPanelJumpMouseClicked
+
+    private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
+        // TODO add your handling code here
+        /*
+            Open employeeMenuPanel when selected on menu
+         */
+        new EmployeeMenuPanel().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_MenuMouseClicked
 
     /**
      * @param args the command line arguments
